@@ -190,8 +190,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<bool>("IsFull")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Resident")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Resident")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

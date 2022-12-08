@@ -14,7 +14,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public string Block { get; set; }
         public string Type { get; set; }
         public int Floor { get; set; }
-        public string Resident { get; set; }
+        public ResidentType Resident { get; set; }
         public bool IsFull { get; set; } 
 
         //IBaseEntity Implementation
