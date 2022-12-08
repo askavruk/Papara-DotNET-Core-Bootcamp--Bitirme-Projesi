@@ -45,7 +45,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             throw new NotImplementedException();
         }
 
-        public async Task<GetUserWithApartmentDTO> GetAllUsers(string id)
+        public async Task<List<GetUserWithApartmentDTO>> GetAllUsers(string id)
         {
             List<User> users = new List<User>();
             List<GetUserWithApartmentDTO> usersWithApartment = new List<GetUserWithApartmentDTO>();

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JarnFUgWS4RkrxjkU7f+lGkhORw7p2MkyLhmhlRwFPH9cigrh6qt1nzjothVrRVkjUjHsonSadfIzVpfSnUAMw==",
+  "dgSpecHash": "YonezS9venyrRTp7RwgHeS1l0VwRejlabqOWAZvrr9UUThU7vtJU3zBvdyJDpY1YqlojpbW8XPAsfxkGVr5zhQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asena Sevnur Ulun\\Desktop\\Papara-Bitirme Projesi\\PaparaBootcampBitirmeProjesi\\PaparaBootcampBitirmeProjesi.BLL\\PaparaBootcampBitirmeProjesi.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
     "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Asena Sevnur Ulun\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

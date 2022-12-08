@@ -15,7 +15,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.AutoMapper
         {
             CreateMap<CreateUserDTO, User>();
             CreateMap<User, UpdateUserDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
-            CreateMap<User, GetUserWithApartmentDTO>().ReverseMap();
+            CreateMap<User, GetUserWithApartmentDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
         }
     }
 }
