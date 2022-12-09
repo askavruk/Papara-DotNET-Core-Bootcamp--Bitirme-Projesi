@@ -21,5 +21,10 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         {
             return dbContext.Users.FirstOrDefault(x => x.Id == id);
         }
+
+        public List<User> GetAllOnTheBlock(string block)
+        {
+            return table.Where(x => x.Apartment.Block == block).ToList();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
     public interface IUserRepository : IBaseRepository<User>
     {
         public User FindUserById(string id);
+        public List<User> GetAllOnTheBlock(string block);
     }
 }

@@ -62,10 +62,9 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 return response.Succeeded ? true : false;
             }
             return false;
-
         }
 
-        public async Task<List<GetUserWithApartmentDTO>> GetAllUsers(string id)
+        public async Task<List<GetUserWithApartmentDTO>> GetAllUsers()
         {
             List<User> users = new List<User>();
             List<GetUserWithApartmentDTO> usersWithApartment = new List<GetUserWithApartmentDTO>();
@@ -73,6 +72,16 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             mapper.Map(users, usersWithApartment);
 
             return usersWithApartment;
+        }
+
+        public List<GetUserWithApartmentDTO> GetAllUsersOnTheBlock(string block)
+        {
+            List<User> users = new List<User>();
+            List<GetUserWithApartmentDTO> allUserOnSameBlock = new List<GetUserWithApartmentDTO>();
+            users = adminRepository.GetAllOnTheBlock(block);
+            mapper.Map(users, allUserOnSameBlock);
+
+            return allUserOnSameBlock;
         }
 
         public async Task<UpdateUserDTO> GetById(string id)

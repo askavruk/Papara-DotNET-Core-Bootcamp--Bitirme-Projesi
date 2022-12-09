@@ -28,7 +28,7 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             if (result is string)
                 return NotFound(result);
             else
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "User");
         }
 
         [HttpGet]
