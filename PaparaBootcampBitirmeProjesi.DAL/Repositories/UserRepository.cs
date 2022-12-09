@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 {
-    public class AdminRepository : BaseRepository<User>, IAdminRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         private readonly AppDbContext dbContext;
-        public AdminRepository(AppDbContext dbContext) : base(dbContext)
+        public UserRepository(AppDbContext dbContext) : base(dbContext)
         {
             this.dbContext = dbContext;
         }

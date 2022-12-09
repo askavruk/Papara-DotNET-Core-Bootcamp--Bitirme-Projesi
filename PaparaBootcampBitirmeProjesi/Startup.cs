@@ -43,10 +43,10 @@ namespace PaparaBootcampBitirmeProjesi
 
             //repositories
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             //services
-            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IUserService, UserService>();
 
             //Mapper
             services.AddAutoMapper(typeof(Mapping));
@@ -79,10 +79,6 @@ namespace PaparaBootcampBitirmeProjesi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                   name: "areas",
-                   pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
-
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Account}/{action=Login}/{id?}");

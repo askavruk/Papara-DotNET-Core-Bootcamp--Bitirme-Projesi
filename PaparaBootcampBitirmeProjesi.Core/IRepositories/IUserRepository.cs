@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
 {
-    public interface IAdminRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<User>
     {
         public User FindUserById(string id);
     }

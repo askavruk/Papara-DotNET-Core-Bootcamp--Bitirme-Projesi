@@ -7,32 +7,47 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAdminService adminService;
+        private readonly IUserService adminService;
 
-        public AccountController(IAdminService adminService)
+        public AccountController(IUserService adminService)
         {
             this.adminService = adminService;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }
 
-        [HttpGet]
+
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDTO isLogin)
         {
             var result = await adminService.Login(isLogin);
             if (result is string)
                 return NotFound(result);
             else
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Admin");
         }
 
         [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO email)
+        {
+            bool result = await adminService.ForgotPassword(email);
+            if (!result)
+            {
+                ModelState.AddModelError("email", "Please give correct email...");
+                return View(email);
+            }
+            ViewBag.email = "Check your email, password changed successfully";
+            return RedirectToAction("Login");
         }
     }
 }

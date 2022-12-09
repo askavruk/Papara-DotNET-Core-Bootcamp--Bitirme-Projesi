@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 {
-    public interface IAdminService
+    public interface IUserService
     {
 
         Task CreateUser(CreateUserDTO createUserDTO);

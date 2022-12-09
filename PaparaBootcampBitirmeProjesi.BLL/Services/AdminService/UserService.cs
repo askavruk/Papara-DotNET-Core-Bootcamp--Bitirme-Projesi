@@ -16,15 +16,15 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 {
-    public class AdminService : IAdminService
+    public class UserService : IUserService
     {
-        private readonly IAdminRepository adminRepository;
+        private readonly IUserRepository adminRepository;
         private readonly IMapper mapper;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly IEmailSender emailSender;
 
-        public AdminService(IAdminRepository adminRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        public UserService(IUserRepository adminRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
         {
             this.adminRepository = adminRepository;
             this.mapper = mapper;
@@ -102,6 +102,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 {
                     bool check = await userManager.CheckPasswordAsync(user, isLogin.Password);
                     if (check)
+                        await signInManager.PasswordSignInAsync(user, isLogin.Password, false, false);
                         return user;
                     return "Please check your email and password...";
                 }
