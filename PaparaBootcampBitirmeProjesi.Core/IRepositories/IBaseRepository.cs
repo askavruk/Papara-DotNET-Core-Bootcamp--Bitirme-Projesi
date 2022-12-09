@@ -11,7 +11,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
     {
         Task Create(T entity);
         void Update(T entity);
-        void Delete(T entity);
+        Task Delete(T entity);
         Task<List<T>> GetAll();
     }
 }

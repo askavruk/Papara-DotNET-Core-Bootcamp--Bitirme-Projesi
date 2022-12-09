@@ -38,11 +38,11 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         /// Passive the Status of the entity and updates the DeleteDate.
         /// </summary>
         /// <param name="entity"></param>
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
             entity.DeleteDate = DateTime.Now;
             entity.Status = Status.Passive;
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
         /// <summary>

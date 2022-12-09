@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PaparaBootcampBitirmeProjesi.BLL.AutoMapper;
+using PaparaBootcampBitirmeProjesi.BLL.EmailSender;
+using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
+using PaparaBootcampBitirmeProjesi.Core.IRepositories;
 using PaparaBootcampBitirmeProjesi.DAL.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PaparaBootcampBitirmeProjesi.DAL.Repositories;
 
 namespace PaparaBootcampBitirmeProjesi
 {
@@ -40,6 +40,19 @@ namespace PaparaBootcampBitirmeProjesi
             {
                 option.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<AppDbContext>();
+
+            //repositories
+            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<IAdminRepository, AdminRepository>();
+
+            //services
+            services.AddScoped<IAdminService, AdminService>();
+
+            //Mapper
+            services.AddAutoMapper(typeof(Mapping));
+
+            //emailSender
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +72,8 @@ namespace PaparaBootcampBitirmeProjesi
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

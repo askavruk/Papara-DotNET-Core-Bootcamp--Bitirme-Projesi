@@ -22,11 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EmailSender\" />
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PaparaBootcampBitirmeProjesi.Core\PaparaBootcampBitirmeProjesi.Core.csproj" />
   </ItemGroup>
 

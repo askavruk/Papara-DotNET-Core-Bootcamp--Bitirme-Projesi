@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaparaBootcampBitirmeProjesi.BLL\PaparaBootcampBitirmeProjesi.BLL.csproj" />
     <ProjectReference Include="..\PaparaBootcampBitirmeProjesi.DAL\PaparaBootcampBitirmeProjesi.DAL.csproj" />
   </ItemGroup>
 

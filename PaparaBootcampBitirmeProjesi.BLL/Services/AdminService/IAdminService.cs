@@ -31,7 +31,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// It calls all users with their apartment
         /// </summary>
         /// <returns></returns>
-        Task<GetUserWithApartmentDTO> GetAllUsers(string id);
+        Task<List<GetUserWithApartmentDTO>> GetAllUsers(string id);
 
         Task DeleteUser(string id);
 

@@ -13,3 +13,6 @@ C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeP
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.BLL.pdb
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.BLL.genruntimeconfig.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\obj\Debug\net5.0\ref\PaparaBootcampBitirmeProjesi.BLL.dll
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\bin\Debug\net5.0\PaparaBootcampBitirmeProjesi.Core.dll
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\bin\Debug\net5.0\PaparaBootcampBitirmeProjesi.Core.pdb
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi.BLL\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.BLL.csproj.CopyComplete
