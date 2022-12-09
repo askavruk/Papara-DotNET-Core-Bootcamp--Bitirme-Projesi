@@ -85,7 +85,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             return allUserOnSameBlock;
         }
 
-        public async Task<UpdateUserDTO> GetById(string id)
+        public UpdateUserDTO GetById(string id)
         {
             UpdateUserDTO updateUser = new UpdateUserDTO();
             var user = adminRepository.FindUserById(id);
@@ -112,13 +112,17 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 {
                     bool check = await userManager.CheckPasswordAsync(user, isLogin.Password);
                     if (check)
+                    {
                         await signInManager.PasswordSignInAsync(user, isLogin.Password, false, false);
                         return user;
+
+                    }
                     return "Please check your email and password...";
                 }
             }
             else
             {
+                //result.Errors.getvalidationErrors(); => Extension method olarak yönetilebilir.
                 string msg = string.Empty;
                 foreach (var err in result.Errors)
                 {
@@ -128,14 +132,18 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             }
         }
 
-        public async Task UpdateUser(UpdateUserDTO model)
+        public void  UpdateUser(UpdateUserDTO model)
         {
-            UpdateUserDTO updateUser = new UpdateUserDTO();
             var user = adminRepository.FindUserById(model.Id);
-            updateUser = mapper.Map<UpdateUserDTO>(user);
+            mapper.Map(model, user);
             adminRepository.Update(user);
         }
 
-      
+
     }
+    //public class UpdateResponse
+    //{
+    //    public string ErrorMessa { get; set; }
+    //    public User User { get; set; }
+    //}
 }

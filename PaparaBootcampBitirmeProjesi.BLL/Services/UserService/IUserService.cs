@@ -19,14 +19,14 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// </summary>
         /// <param name="id"></param>
         /// <returns>UpdateUserDTO</returns>
-        Task<UpdateUserDTO> GetById(string id);
+        UpdateUserDTO GetById(string id);
 
         /// <summary>
         /// It is update according to model parameter(UpdateUserDTO)
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task UpdateUser(UpdateUserDTO model);
+        void UpdateUser(UpdateUserDTO model);
 
         /// <summary>
         /// It calls all users with their apartment
