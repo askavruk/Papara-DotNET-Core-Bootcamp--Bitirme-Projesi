@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -27,7 +28,7 @@ namespace PaparaBootcampBitirmeProjesi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             //DbContext
             services.AddDbContext<AppDbContext>(options =>
@@ -50,6 +51,7 @@ namespace PaparaBootcampBitirmeProjesi
 
             //Mapper
             services.AddAutoMapper(typeof(Mapping));
+
 
             //emailSender
             services.AddSingleton<IEmailSender, EmailSender>();

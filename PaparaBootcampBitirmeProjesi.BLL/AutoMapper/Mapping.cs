@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
+using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.AutoMapper
         {
             CreateMap<CreateUserDTO, User>();
             CreateMap<User, UpdateUserDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
-            CreateMap<User, GetUserWithApartmentDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
+            CreateMap<User, GetUsersWithApartmentDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
         }
     }
 }

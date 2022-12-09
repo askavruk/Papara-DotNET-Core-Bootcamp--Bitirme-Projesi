@@ -22,7 +22,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.EmailSender
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
             mail.To.Add(email);
-            mail.From = new MailAddress(configuration["Mail:name"], "Hr Boost", System.Text.Encoding.UTF8);
+            mail.From = new MailAddress(configuration["Mail:name"], "Papara", System.Text.Encoding.UTF8);
             mail.Subject = subject;
             mail.Body = message;
 

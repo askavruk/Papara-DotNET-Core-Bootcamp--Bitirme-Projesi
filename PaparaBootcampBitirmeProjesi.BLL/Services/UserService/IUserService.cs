@@ -1,5 +1,6 @@
 ﻿using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
+using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// It calls all users with their apartment
         /// </summary>
         /// <returns></returns>
-        Task<List<GetUserWithApartmentDTO>> GetAllUsers();
-        List<GetUserWithApartmentDTO> GetAllUsersOnTheBlock(string block);
+        Task<List<GetUsersWithApartmentDTO>> GetAllUsers();
+        List<GetUsersWithApartmentDTO> GetAllUsersOnTheBlock(string block);
 
         Task DeleteUser(string id);
 

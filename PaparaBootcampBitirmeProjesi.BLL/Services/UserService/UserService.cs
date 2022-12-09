@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using PaparaBootcampBitirmeProjesi.BLL.EmailSender;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
+using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Validators;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
 using PaparaBootcampBitirmeProjesi.Core.Enums;
@@ -64,20 +65,20 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             return false;
         }
 
-        public async Task<List<GetUserWithApartmentDTO>> GetAllUsers()
+        public async Task<List<GetUsersWithApartmentDTO>> GetAllUsers()
         {
             List<User> users = new List<User>();
-            List<GetUserWithApartmentDTO> usersWithApartment = new List<GetUserWithApartmentDTO>();
+            List<GetUsersWithApartmentDTO> usersWithApartment = new List<GetUsersWithApartmentDTO>();
             users = await adminRepository.GetAll();
             mapper.Map(users, usersWithApartment);
 
             return usersWithApartment;
         }
 
-        public List<GetUserWithApartmentDTO> GetAllUsersOnTheBlock(string block)
+        public List<GetUsersWithApartmentDTO> GetAllUsersOnTheBlock(string block)
         {
             List<User> users = new List<User>();
-            List<GetUserWithApartmentDTO> allUserOnSameBlock = new List<GetUserWithApartmentDTO>();
+            List<GetUsersWithApartmentDTO> allUserOnSameBlock = new List<GetUsersWithApartmentDTO>();
             users = adminRepository.GetAllOnTheBlock(block);
             mapper.Map(users, allUserOnSameBlock);
 

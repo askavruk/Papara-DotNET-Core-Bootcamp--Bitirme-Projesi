@@ -163,7 +163,10 @@ C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeP
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\bin\Debug\net5.0\PaparaBootcampBitirmeProjesi.BLL.dll
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\bin\Debug\net5.0\PaparaBootcampBitirmeProjesi.BLL.pdb
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\AllOfThemPartial.cshtml.g.cs
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\BlockAListPartial.cshtml.g.cs
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\BlockBListPartial.cshtml.g.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\AllOfThem.cshtml.g.cs
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\BlockAList.cshtml.g.cs
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\User\BlockBList.cshtml.g.cs

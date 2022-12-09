@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaparaBootcampBitirmeProjesi.BLL.Models
+namespace PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
 {
     public class CreateUserDTO
     {

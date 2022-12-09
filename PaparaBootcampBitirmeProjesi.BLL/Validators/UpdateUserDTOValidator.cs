@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
+using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
