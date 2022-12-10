@@ -54,8 +54,8 @@
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
                             <td>@item.Vehicles</td>
-                            <td><button asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</button></td>
-                            <td><button asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Sil</button></td>
+                            <td><a asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</a></td>
+                            <td><a asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Sil</a></td>
                         </tr>
                     }
                 </tbody>

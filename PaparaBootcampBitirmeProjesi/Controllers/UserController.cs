@@ -74,10 +74,10 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteUser(string id)
+        public async Task<IActionResult> DeleteUser(string id)
         {
-            userService.DeleteUser(id);
-            return View();
+            await userService.DeleteUser(id);
+            return RedirectToAction("UpdateOrDeleteUser");
         }
 
 
