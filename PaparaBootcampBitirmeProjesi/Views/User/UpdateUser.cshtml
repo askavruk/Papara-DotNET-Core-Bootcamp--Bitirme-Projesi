@@ -4,62 +4,63 @@
 
 @using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
 
-@model List<UpdateUserDTO>
+@model UpdateUserDTO
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Site Sakinleri</h6>
+<div class="text-danger" asp-validation-summary="All"></div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Daire Sakini Ekle</h3>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Blok</th>
-                        <th>Daire</th>
-                        <th>Daire Tipi</th>
-                        <th>Ad Soyad</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Araç Bilgisi</th>
-                        <th>Düzenle</th>
-                        <th>Sil</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @if (item.Apartment != null)
-                                {
-                                    @item.Apartment.Block
-                                }
-                            </td>
-                            <td>
-                                @if (item.Apartment != null)
-                                {
-                                    @item.Apartment.ApartmentNo
-                                }
-                            </td>
-                            <td>
-                                @if (item.Apartment != null)
-                                {
-                                    @item.Apartment.Type
-                                }
-                            </td>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form method="post" asp-action="CreateUser">
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="FirstName">İsim</label>
+                <input asp-for="FirstName" type="text" class="form-control" placeholder="İsim">
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondName" class="control-label">İkinci İsim</label>
+                <input asp-for="SecondName" type="text" class="form-control" placeholder="İkinci İsim" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Soyisim</label>
+                <input asp-for="LastName" type="text" class="form-control" placeholder="Soyisim" />
+            </div>
+            <div class="form-group">
+                <label asp-for="IdentityNumber" class="control-label">TC Kimlik No</label>
+                <input asp-for="IdentityNumber" type="text" class="form-control" placeholder="TC Kimlik No" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Phone</label>
+                <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Telefon Numarası" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="E-Mail" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.Block" class="control-label">Blok</label>
+                <input asp-for="Apartment.Block" type="text" class="form-control" placeholder="Blok" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.Floor" class="control-label">Kat</label>
+                <input asp-for="Apartment.Floor" type="text" class="form-control" placeholder="Kat" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.ApartmentNo" class="control-label">Daire No</label>
+                <input asp-for="Apartment.ApartmentNo" type="text" class="form-control" placeholder="Daire No" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.Type" class="control-label">Daire Tipi</label>
+                <input asp-for="Apartment.Type" type="text" class="form-control" placeholder="Daire Tipi" />
+            </div>
 
-                            <td>@item.FirstName @item.SecondName @item.LastName</td>
-                            <td>@item.Email</td>
-                            <td>@item.PhoneNumber</td>
-                            <td>@item.Vehicles</td>
-                            <td><button asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</button></td>
-                            <td><button asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Sil</button></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
         </div>
-    </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </div>
+    </form>
 </div>

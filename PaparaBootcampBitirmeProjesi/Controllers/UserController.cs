@@ -54,6 +54,12 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult UpdateOrDeleteUser()
+        {
+            var allOfThem = userService.GetAllUsers();
+            return View(allOfThem);
+        }
+
 
         public IActionResult UpdateUser(string id)
         {
