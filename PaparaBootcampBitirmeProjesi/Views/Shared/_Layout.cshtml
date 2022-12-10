@@ -58,9 +58,9 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html" onclick="GetBlockBList()">A Blok Sakinleri</a>
-                        <a class="collapse-item" href="utilities-border.html">B Blok Sakinleri</a>
-                        <a class="collapse-item" href="utilities-animation.html">Tümü</a>
+                        <a asp-action="BlokAList" asp-controller="User" class="collapse-item">A Blok Sakinleri</a>
+                        <a asp-action="BlokBList" asp-controller="User" class="collapse-item">B Blok Sakinleri</a>
+                        <a asp-action="AllUsers" asp-controller="User" class="collapse-item">Tümü</a>
                     </div>
                 </div>
             </li>

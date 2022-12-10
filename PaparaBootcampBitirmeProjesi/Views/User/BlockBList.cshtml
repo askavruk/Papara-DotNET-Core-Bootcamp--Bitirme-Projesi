@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    Layout = "_Layout";
+}
+
 @using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
 
 @model List<GetUsersWithApartmentDTO>
@@ -6,7 +9,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary">B Blok Sakinleri</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -15,6 +18,7 @@
                     <tr>
                         <th>Blok</th>
                         <th>Daire</th>
+                        <th>Daire Tipi</th>
                         <th>Ad Soyad</th>
                         <th>Email</th>
                         <th>Telefon</th>
@@ -22,19 +26,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in Model)
+                    @foreach (var item in Model)
                     {
                         <tr>
-                        <td>@item.Apartment.Block</td>
-                        <td>@item.Apartment.ApartmentNo</td>
-                        <td>@item.FirstName</td>
-                        <td>@item.SecondName</td>
-                        <td>@item.LastName</td>
-                        <td>@item.PhoneNumber</td>
-                        <td>@item.Email</td>
-                        <td>@item.Vehicles</td>
-                    </tr>
-                    }                  
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.Block
+                                }
+                            </td>
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.ApartmentNo
+                                }
+                            </td>
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.Type
+                                }
+                            </td>
+
+                            <td>@item.FirstName @item.SecondName @item.LastName</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Vehicles</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

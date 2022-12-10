@@ -19,15 +19,17 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         {
             return View();
         }
-        public IActionResult BlockAList(string A)
+        public IActionResult BlockAList(string BlockA)
         {
-            var blokAUsers = userService.GetAllUsersOnTheBlock(A);
+            BlockA = "A";
+            var blokAUsers = userService.GetAllUsersOnTheBlock(BlockA);
             return View(blokAUsers);
         }
 
-        public IActionResult BlockBList(string B)
+        public IActionResult BlockBList(string BlockB)
         {
-            var blokBUsers = userService.GetAllUsersOnTheBlock(B);
+            BlockB = "B";
+            var blokBUsers = userService.GetAllUsersOnTheBlock(BlockB);
             return View(blokBUsers);
         }
 

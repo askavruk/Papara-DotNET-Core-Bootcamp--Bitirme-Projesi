@@ -26,7 +26,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 
         public List<User> GetAllOnTheBlock(string block)
         {
-            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == block).ToList();
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == block).Include(x => x.Apartment).ToList();
         }
 
         public List<User> GetAllWithApartment()
