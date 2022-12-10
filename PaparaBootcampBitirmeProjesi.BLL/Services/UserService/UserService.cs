@@ -107,6 +107,8 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             if (result.IsValid)
             {
                 User user = await userManager.FindByEmailAsync(isLogin.Email);
+                await userManager.AddPasswordAsync(user, "admin123");
+
                 if (user == null) return "Please check your email and password...";
                 else
                 {

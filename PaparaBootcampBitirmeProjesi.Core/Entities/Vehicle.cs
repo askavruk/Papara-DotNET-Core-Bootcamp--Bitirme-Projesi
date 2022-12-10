@@ -18,7 +18,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public DateTime CreationDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
-        public Status Status { get; set; }
+        public Status Status { get; set; } = Status.Active;
 
         //Relations
         public string UserId { get; set; }

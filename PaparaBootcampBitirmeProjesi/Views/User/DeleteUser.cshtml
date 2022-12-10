@@ -1,0 +1,66 @@
+﻿@using PaparaBootcampBitirmeProjesi.Core.Entities
+@{
+    Layout = "_Layout";
+}
+
+
+@model List<User>;
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Site Sakinleri</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Blok</th>
+                        <th>Daire</th>
+                        <th>Daire Tipi</th>
+                        <th>Ad Soyad</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Araç Bilgisi</th>
+                        <th>Düzenle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.Block
+                                }
+                            </td>
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.ApartmentNo
+                                }
+                            </td>
+                            <td>
+                                @if (item.Apartment != null)
+                                {
+                                    @item.Apartment.Type
+                                }
+                            </td>
+
+                            <td>@item.FirstName @item.SecondName @item.LastName</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Vehicles</td>
+                            <td><button asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</button></td>
+                            <td><button asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Sil</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -45,12 +45,12 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(CreateUserDTO createUserDTO)
+        public async Task<IActionResult> CreateUser(CreateUserDTO createUserDTO)
         {
             if (createUserDTO == null)
                 return NotFound();
             else
-                userService.CreateUser(createUserDTO);
+               await userService.CreateUser(createUserDTO);
             return RedirectToAction("Index");
         }
 
@@ -67,6 +67,13 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             userService.UpdateUser(updateUser);
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteUser(string id)
+        {
+            userService.DeleteUser(id);
+            return View();
+        }
+
 
 
     }

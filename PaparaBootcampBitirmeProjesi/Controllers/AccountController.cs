@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
+using PaparaBootcampBitirmeProjesi.Core.Entities;
 using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers

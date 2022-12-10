@@ -9,6 +9,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
 {
     public class GetUsersWithApartmentDTO
     {
+        public string İd { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }
