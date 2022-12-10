@@ -9,7 +9,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Vehicle : IBaseEntity
     {
-        public int VehicleId { get; set; }
+        public string VehicleId { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
         public string LicensePlate { get; set; }
@@ -21,7 +21,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public Status Status { get; set; }
 
         //Relations
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }

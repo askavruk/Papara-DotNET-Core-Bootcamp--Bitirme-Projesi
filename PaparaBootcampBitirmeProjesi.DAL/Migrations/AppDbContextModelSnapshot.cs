@@ -59,6 +59,22 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0",
+                            ConcurrencyStamp = "948f3b89-1015-4d9d-b9cc-74a8ef6eda20",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "1b4a4be4-5e3c-40fd-89ac-a3b47803b506",
+                            ConcurrencyStamp = "208f28fb-7724-4fb7-b8f7-7caa34886eb1",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -144,6 +160,13 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "9a0d3776-5392-456c-8f81-42a1811d5129",
+                            RoleId = "8da8ad13-b14a-458b-9b29-b07015c3b3d0"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -167,10 +190,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ApartmentNo")
                         .HasColumnType("int");
@@ -202,10 +223,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Apartments");
                 });
@@ -254,8 +279,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("ApartmentId")
-                        .HasColumnType("int");
+                    b.Property<string>("ApartmentId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -327,9 +352,6 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentId")
-                        .IsUnique();
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -339,14 +361,35 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9a0d3776-5392-456c-8f81-42a1811d5129",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "77256631-9f05-4fc5-86ac-90b1053d48c2",
+                            CreationDate = new DateTime(2022, 12, 10, 15, 5, 17, 134, DateTimeKind.Local).AddTicks(8753),
+                            Email = "asenasulun@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Asena",
+                            IdentityNumber = "12341231257",
+                            LastName = "Kavruk",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ASENASULUN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Sevnur",
+                            SecurityStamp = "ac49a573-a07b-4047-b787-fe33b6389582",
+                            Status = 1,
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Vehicle", b =>
                 {
-                    b.Property<int>("VehicleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("VehicleId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
@@ -369,15 +412,12 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("VehicleId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Vehicles");
                 });
@@ -448,33 +488,28 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.User", b =>
+            modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", b =>
                 {
-                    b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", "Apartment")
-                        .WithOne("User")
-                        .HasForeignKey("PaparaBootcampBitirmeProjesi.Core.Entities.User", "ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", "User")
+                        .WithOne("Apartment")
+                        .HasForeignKey("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", "UserId");
 
-                    b.Navigation("Apartment");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Vehicle", b =>
                 {
                     b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", "User")
                         .WithMany("Vehicles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", b =>
-                {
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.User", b =>
                 {
+                    b.Navigation("Apartment");
+
                     b.Navigation("Vehicles");
                 });
 #pragma warning restore 612, 618

@@ -18,25 +18,25 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         public IActionResult Index()
         {
             return View();
-        }  
+        }
         public IActionResult BlockAList(string A)
         {
             var blokAUsers = userService.GetAllUsersOnTheBlock(A);
             return View(blokAUsers);
         }
-        
+
         public IActionResult BlockBList(string B)
         {
             var blokBUsers = userService.GetAllUsersOnTheBlock(B);
             return View(blokBUsers);
         }
-        
-        public async Task<IActionResult> AllUsers()
+
+        public IActionResult AllUsers()
         {
-            var allOfThem = await userService.GetAllUsers();
+            var allOfThem = userService.GetAllUsers();
             return View(allOfThem);
         }
-     
+
         public IActionResult CreateUser()
         {
             return View();
@@ -49,10 +49,10 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
                 return NotFound();
             else
                 userService.CreateUser(createUserDTO);
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
-        
+
         public IActionResult UpdateUser(string id)
         {
             UpdateUserDTO updateUserDTO = userService.GetById(id);

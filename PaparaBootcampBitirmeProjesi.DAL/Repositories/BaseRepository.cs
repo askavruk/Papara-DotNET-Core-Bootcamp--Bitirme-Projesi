@@ -51,7 +51,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         /// <returns></returns>
         public async Task<List<T>> GetAll()
         {
-            return await table.Where(x => x.Status == Status.Active).ToListAsync(); 
+            return await table.Where(x => x.Status == Status.Active).ToListAsync();
         }
 
 

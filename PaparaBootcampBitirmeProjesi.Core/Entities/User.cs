@@ -10,6 +10,12 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class User : IdentityUser, IBaseEntity
     {
+        public User()
+        {
+            Vehicles = new List<Vehicle>();
+            Messages = new List<Message>();
+        }
+
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }
@@ -22,7 +28,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public Status Status { get; set; }
 
         //Relations
-        public int ApartmentId { get; set; }
+        public string ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
 
         public List<Vehicle> Vehicles { get; set; }

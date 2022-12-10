@@ -29,19 +29,18 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
             builder.ApplyConfiguration(new UserConfig());
             builder.ApplyConfiguration(new VehicleConfig());
 
+            builder.Entity<User>().HasOne(a => a.Apartment).WithOne(a => a.User).HasForeignKey<Apartment>(c => c.UserId);
+
             //Admin
             User user = new User();
             user.Id = "9a0d3776-5392-456c-8f81-42a1811d5129";
             user.UserName = "admin";
             user.FirstName = "Asena";
-            user.LastName = "Kavruk";
             user.SecondName = "Sevnur";
+            user.LastName = "Kavruk";
             user.IdentityNumber = "12341231257";
-            user.PhoneNumber = "5555555555";
-            user.Apartment.ApartmentNo = 0;
             user.CreationDate = DateTime.Now;
             user.Status = Status.Active;
-            user.UpdateDate = null;
             user.Email = "asenasulun@gmail.com";
             user.NormalizedEmail = "ASENASULUN@GMAIL.COM";
             user.PhoneNumberConfirmed = false;
@@ -51,10 +50,10 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
             user.LockoutEnabled = true;
             user.AccessFailedCount = 0;
 
-            
+
             builder.Entity<User>().HasData(user);
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0", Name = "Admin", NormalizedName = "ADMIN" });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "User", NormalizedName = "USER" });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0", Name = "admin", NormalizedName = "ADMIN" });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "user", NormalizedName = "USER" });
 
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>

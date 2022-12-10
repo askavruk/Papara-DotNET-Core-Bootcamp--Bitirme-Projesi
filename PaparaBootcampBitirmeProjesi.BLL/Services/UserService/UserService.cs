@@ -19,15 +19,15 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository adminRepository;
+        private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly IEmailSender emailSender;
 
-        public UserService(IUserRepository adminRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        public UserService(IUserRepository userRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
         {
-            this.adminRepository = adminRepository;
+            this.userRepository = userRepository;
             this.mapper = mapper;
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -38,14 +38,14 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         {
             User user = new User();
             mapper.Map(createUserDTO, user);
-            await adminRepository.Create(user);
+            await userRepository.Create(user);
         }
 
         public async Task DeleteUser(string id)
         {
-            User user = adminRepository.FindUserById(id);
+            User user = userRepository.FindUserById(id);
             if (user == null) throw new ArgumentException("Id not found");
-            await adminRepository.Delete(user);
+            await userRepository.Delete(user);
         }
 
         public async Task<bool> ForgotPassword(ForgotPasswordDTO forgotPassword)
@@ -65,11 +65,11 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             return false;
         }
 
-        public async Task<List<GetUsersWithApartmentDTO>> GetAllUsers()
+        public List<GetUsersWithApartmentDTO> GetAllUsers()
         {
             List<User> users = new List<User>();
             List<GetUsersWithApartmentDTO> usersWithApartment = new List<GetUsersWithApartmentDTO>();
-            users = await adminRepository.GetAll();
+            users = userRepository.GetAllWithApartment();
             mapper.Map(users, usersWithApartment);
 
             return usersWithApartment;
@@ -79,7 +79,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         {
             List<User> users = new List<User>();
             List<GetUsersWithApartmentDTO> allUserOnSameBlock = new List<GetUsersWithApartmentDTO>();
-            users = adminRepository.GetAllOnTheBlock(block);
+            users = userRepository.GetAllOnTheBlock(block);
             mapper.Map(users, allUserOnSameBlock);
 
             return allUserOnSameBlock;
@@ -88,7 +88,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         public UpdateUserDTO GetById(string id)
         {
             UpdateUserDTO updateUser = new UpdateUserDTO();
-            var user = adminRepository.FindUserById(id);
+            var user = userRepository.FindUserById(id);
             if (user != null)
             {
                 if (user.Status == Status.Active)
@@ -134,9 +134,9 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
         public void  UpdateUser(UpdateUserDTO model)
         {
-            var user = adminRepository.FindUserById(model.Id);
+            var user = userRepository.FindUserById(model.Id);
             mapper.Map(model, user);
-            adminRepository.Update(user);
+            userRepository.Update(user);
         }
 
 

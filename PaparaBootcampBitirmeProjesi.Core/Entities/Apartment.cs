@@ -9,7 +9,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Apartment : IBaseEntity
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int ApartmentNo { get; set; }
         public string Block { get; set; }
         public string Type { get; set; }
@@ -23,8 +23,8 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public DateTime? DeleteDate { get; set; }
         public Status Status { get; set; }
 
-        //Reletions
-        public int UserId { get; set; }
+        //Relations
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }

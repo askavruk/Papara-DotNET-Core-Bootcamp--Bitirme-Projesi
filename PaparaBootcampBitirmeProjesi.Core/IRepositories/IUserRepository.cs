@@ -11,5 +11,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
     {
         public User FindUserById(string id);
         public List<User> GetAllOnTheBlock(string block);
+        public List<User> GetAllWithApartment();
     }
 }

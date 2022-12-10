@@ -1,4 +1,6 @@
-﻿using PaparaBootcampBitirmeProjesi.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PaparaBootcampBitirmeProjesi.Core.Entities;
+using PaparaBootcampBitirmeProjesi.Core.Enums;
 using PaparaBootcampBitirmeProjesi.Core.IRepositories;
 using PaparaBootcampBitirmeProjesi.DAL.Context;
 using System;
@@ -24,7 +26,12 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 
         public List<User> GetAllOnTheBlock(string block)
         {
-            return table.Where(x => x.Apartment.Block == block).ToList();
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == block).ToList();
+        }
+
+        public List<User> GetAllWithApartment()
+        {
+            return dbContext.Users.Where(x => x.Status == Status.Active).Include(a => a.Apartment).ToList();
         }
     }
 }

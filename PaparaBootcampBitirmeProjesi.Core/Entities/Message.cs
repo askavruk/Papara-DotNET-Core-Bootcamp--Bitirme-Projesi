@@ -9,6 +9,10 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Message : IBaseEntity
     {
+        public Message()
+        {
+            Users = new List<User>();
+        }
         public int MessageId { get; set; }
         public string SenderMail { get; set; }
         public string RecevierMail { get; set; }
@@ -22,6 +26,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public Status Status { get; set; }
 
         //Relations
-        public List<User> User { get; set; }
+        public List<User> Users { get; set; }
     }
 }
