@@ -3,7 +3,6 @@ C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeP
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.AssemblyInfoInputs.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.AssemblyInfo.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.csproj.CoreCompileInputs.cache
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.RazorAssemblyInfo.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.RazorAssemblyInfo.cs

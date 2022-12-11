@@ -26,18 +26,17 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecondName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdentityNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdentityNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    ApartmentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -99,28 +98,27 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 name: "Apartments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ApartmentNo = table.Column<int>(type: "int", nullable: false),
-                    Block = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Block = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Floor = table.Column<int>(type: "int", nullable: false),
                     Resident = table.Column<int>(type: "int", nullable: false),
                     IsFull = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Apartments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Apartments_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Apartments_AspNetUsers_Id",
+                        column: x => x.Id,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -260,29 +258,22 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8da8ad13-b14a-458b-9b29-b07015c3b3d0", "81ad34de-9069-43df-8b1b-e21bcc12b6b6", "admin", "ADMIN" });
+                values: new object[] { "8da8ad13-b14a-458b-9b29-b07015c3b3d0", "e8814ad4-df20-45a0-9cc0-c32843ba8eb1", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "4e9843a8-623e-40b2-b74f-b9e6fd273ac7", "05259670-052e-4e31-88f9-edd961e3bf3e", "user", "USER" });
+                values: new object[] { "c576bb2a-f6b7-46b1-8404-7bd7f5c5f48f", "43952c86-c1d7-4e9c-b658-d03c29be0b17", "user", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ApartmentId", "ConcurrencyStamp", "CreationDate", "DeleteDate", "Email", "EmailConfirmed", "FirstName", "IdentityNumber", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "Status", "TwoFactorEnabled", "UpdateDate", "UserName" },
-                values: new object[] { "9a0d3776-5392-456c-8f81-42a1811d5129", 0, null, "889c6142-52ae-4b84-96a5-5f7e86a8a181", new DateTime(2022, 12, 10, 22, 21, 34, 78, DateTimeKind.Local).AddTicks(6335), null, "asenasulun@gmail.com", false, "Asena", "12341231257", "Kavruk", true, null, "ASENASULUN@GMAIL.COM", "ADMIN", null, null, false, "Sevnur", "7bb840c8-fc45-4f5e-81b6-04732f9361bb", 1, false, null, "admin" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreationDate", "DeleteDate", "Email", "EmailConfirmed", "FirstName", "IdentityNumber", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "Status", "TwoFactorEnabled", "UpdateDate", "UserName" },
+                values: new object[] { "9a0d3776-5392-456c-8f81-42a1811d5129", 0, "3a092ae2-d708-48aa-a749-5903997da465", new DateTime(2022, 12, 12, 0, 16, 1, 405, DateTimeKind.Local).AddTicks(9824), null, "asenadeneme@hotmail.com", false, "Asena", "12341231257", "Kavruk", true, null, "ASENADENEME@HOTMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==", null, false, "Sevnur", "c17ccf50-4628-42e4-90f0-29dea93cc167", 1, false, null, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { "8da8ad13-b14a-458b-9b29-b07015c3b3d0", "9a0d3776-5392-456c-8f81-42a1811d5129" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Apartments_UserId",
-                table: "Apartments",
-                column: "UserId",
-                unique: true,
-                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

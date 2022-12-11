@@ -29,11 +29,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
             builder.ApplyConfiguration(new UserConfig());
             builder.ApplyConfiguration(new VehicleConfig());
 
-            builder.Entity<User>().HasOne(a => a.Apartment).WithOne(a => a.User).HasForeignKey<Apartment>(c => c.UserId);
 
-
-    //Admin
-    User user = new User();
+            //Admin
+            User user = new User();
             user.Id = "9a0d3776-5392-456c-8f81-42a1811d5129";
             user.UserName = "admin";
             user.FirstName = "Asena";
@@ -42,14 +40,15 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
             user.IdentityNumber = "12341231257";
             user.CreationDate = DateTime.Now;
             user.Status = Status.Active;
-            user.Email = "asenasulun@gmail.com";
-            user.NormalizedEmail = "ASENASULUN@GMAIL.COM";
+            user.Email = "asenadeneme@hotmail.com";
+            user.NormalizedEmail = "ASENADENEME@HOTMAIL.COM";
             user.PhoneNumberConfirmed = false;
             user.EmailConfirmed = false;
             user.NormalizedUserName = "ADMIN";
             user.TwoFactorEnabled = false;
             user.LockoutEnabled = true;
             user.AccessFailedCount = 0;
+            user.PasswordHash = "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==";
 
 
             builder.Entity<User>().HasData(user);
@@ -64,7 +63,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
                 }
             );
 
-            base.OnModelCreating(builder);  
+            base.OnModelCreating(builder);
         }
 
     }

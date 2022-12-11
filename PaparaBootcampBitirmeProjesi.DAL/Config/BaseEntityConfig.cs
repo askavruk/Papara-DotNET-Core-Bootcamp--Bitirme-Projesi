@@ -11,7 +11,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
 {
     public abstract class BaseEntityConfig<T> : IEntityTypeConfiguration<T> where T : class, IBaseEntity
     {
-        public void Configure(EntityTypeBuilder<T> builder)
+        public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.Property(x => x.CreationDate).IsRequired();
         }

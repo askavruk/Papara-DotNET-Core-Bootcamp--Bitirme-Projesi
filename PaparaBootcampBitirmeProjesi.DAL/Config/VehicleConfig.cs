@@ -10,9 +10,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
 {
     public class VehicleConfig : BaseEntityConfig<Vehicle>
     {
-        public virtual void Configure(EntityTypeBuilder<Vehicle> builder)
+        public override void Configure(EntityTypeBuilder<Vehicle> builder)
         {
-           
             base.Configure(builder);
         }
     }

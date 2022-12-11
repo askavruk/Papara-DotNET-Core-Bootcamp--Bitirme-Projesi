@@ -11,11 +11,11 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        private readonly IUserService adminService;
+        private readonly IUserService userService;
 
-        public AccountController(IUserService adminService)
+        public AccountController(IUserService userService)
         {
-            this.adminService = adminService;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -28,7 +28,7 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginDTO isLogin)
         {
-            var result = await adminService.Login(isLogin);
+            var result = await userService.Login(isLogin);
             if (result is string)
                 return NotFound(result);
             else
@@ -42,15 +42,15 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO email)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO forgotPassword)
         {
-            bool result = await adminService.ForgotPassword(email);
+            bool result = await userService.ForgotPassword(forgotPassword);
             if (!result)
             {
                 ModelState.AddModelError("email", "Please give correct email...");
-                return View(email);
+                return View(forgotPassword);
             }
-            ViewBag.email = "Check your email, password changed successfully";
+            //ViewBag.email = "Check your email, password changed successfully";
             return RedirectToAction("Login");
         }
     }

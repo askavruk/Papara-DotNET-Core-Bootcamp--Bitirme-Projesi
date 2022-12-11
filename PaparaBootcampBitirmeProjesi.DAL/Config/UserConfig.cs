@@ -10,8 +10,10 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
 {
     public class UserConfig : BaseEntityConfig<User>
     {
-        public virtual void Configure(EntityTypeBuilder<User> builder)
+        public override void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasOne(a => a.Apartment).WithOne(a => a.User).HasForeignKey<Apartment>(c => c.Id);
+
             builder.Property(x => x.FirstName).IsRequired();
             builder.Property(x => x.LastName).IsRequired();
             builder.Property(x => x.Email).IsRequired();

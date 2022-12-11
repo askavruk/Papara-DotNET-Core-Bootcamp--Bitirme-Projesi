@@ -64,13 +64,13 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         public IActionResult UpdateUser(string id)
         {
             UpdateUserDTO updateUserDTO = userService.GetById(id);
-            return View();
+            return View(updateUserDTO);
         }
 
         [HttpPost]
-        public IActionResult UpdateUser(UpdateUserDTO updateUser)
+        public async Task<IActionResult> UpdateUser(UpdateUserDTO updateUser)
         {
-            userService.UpdateUser(updateUser);
+            await userService.UpdateUser(updateUser);
             return RedirectToAction("Index");
         }
 

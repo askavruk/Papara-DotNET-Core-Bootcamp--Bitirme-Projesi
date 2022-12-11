@@ -38,14 +38,20 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         {
             User user = new User();
             mapper.Map(createUserDTO, user);
-            await userRepository.Create(user);
+            string password = Guid.NewGuid().ToString();
+            await userManager.CreateAsync(user, password);
+            //Email sender ile kullanıcıya şifreyi mail at
+            emailSender.SendEmail(user.Email, "New Password", $"Here your password,please do not share your password nobody...\nPassword : {password}");
         }
 
         public async Task DeleteUser(string id)
         {
             User user = userRepository.FindUserById(id);
-            if (user == null) throw new ArgumentException("Id not found");
-            await userRepository.Delete(user);
+            if (user == null) 
+                throw new ArgumentException("Id not found");
+            user.Status = Status.Passive;
+            user.DeleteDate = DateTime.Now;
+            await userManager.UpdateAsync(user);
         }
 
         public async Task<bool> ForgotPassword(ForgotPasswordDTO forgotPassword)
@@ -89,6 +95,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         {
             UpdateUserDTO updateUser = new UpdateUserDTO();
             var user = userRepository.FindUserById(id);
+            //var user = userManager.FindByIdAsync(id); // ıdentityten gelen metotları kullanmak daha hızlı işlem ve databse normalize kısmını otomatik yapıyor.
             if (user != null)
             {
                 if (user.Status == Status.Active)
@@ -107,7 +114,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             if (result.IsValid)
             {
                 User user = await userManager.FindByEmailAsync(isLogin.Email);
-                await userManager.AddPasswordAsync(user, "admin123");
 
                 if (user == null) return "Please check your email and password...";
                 else
@@ -134,12 +140,16 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             }
         }
 
-        public void UpdateUser(UpdateUserDTO model)
+        public async Task UpdateUser(UpdateUserDTO model)
         {
-            var user = userRepository.FindUserById(model.Id);
+            var user = await userManager.FindByIdAsync(model.Id);
             user.UpdateDate = DateTime.Now;
             mapper.Map(model, user);
-            userRepository.Update(user);
+            IdentityResult result= await userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+
+            }
         }
 
 

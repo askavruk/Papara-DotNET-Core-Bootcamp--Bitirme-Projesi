@@ -39,7 +39,14 @@ namespace PaparaBootcampBitirmeProjesi
             //Identity
             services.AddIdentity<User, IdentityRole>(option =>
             {
+                option.SignIn.RequireConfirmedEmail = false;
+                option.SignIn.RequireConfirmedPhoneNumber = false;
+                option.SignIn.RequireConfirmedAccount = false;
+                option.User.RequireUniqueEmail = true;
                 option.Password.RequireUppercase = false;
+                option.Password.RequiredLength = 3;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireLowercase = false;
             }).AddEntityFrameworkStores<AppDbContext>();
 
             //repositories

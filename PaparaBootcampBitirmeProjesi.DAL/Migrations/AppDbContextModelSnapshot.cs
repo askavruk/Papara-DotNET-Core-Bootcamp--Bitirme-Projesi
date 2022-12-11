@@ -64,14 +64,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         new
                         {
                             Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0",
-                            ConcurrencyStamp = "ec6a088c-13f4-471e-a08b-d7b3fa718e4c",
+                            ConcurrencyStamp = "e8814ad4-df20-45a0-9cc0-c32843ba8eb1",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b0d8eb99-624b-481d-b521-42959f53ce71",
-                            ConcurrencyStamp = "c76326be-78e6-46d0-b864-8d812b6f3c43",
+                            Id = "c576bb2a-f6b7-46b1-8404-7bd7f5c5f48f",
+                            ConcurrencyStamp = "43952c86-c1d7-4e9c-b658-d03c29be0b17",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -190,14 +190,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ApartmentNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Block")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
@@ -219,19 +219,13 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Apartments");
                 });
@@ -278,9 +272,6 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApartmentId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -292,6 +283,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -299,12 +291,15 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentityNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -366,19 +361,20 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         {
                             Id = "9a0d3776-5392-456c-8f81-42a1811d5129",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c25fe287-0408-4967-9d9b-06f2466da769",
-                            CreationDate = new DateTime(2022, 12, 11, 11, 53, 43, 55, DateTimeKind.Local).AddTicks(1915),
-                            Email = "asenasulun@gmail.com",
+                            ConcurrencyStamp = "3a092ae2-d708-48aa-a749-5903997da465",
+                            CreationDate = new DateTime(2022, 12, 12, 0, 16, 1, 405, DateTimeKind.Local).AddTicks(9824),
+                            Email = "asenadeneme@hotmail.com",
                             EmailConfirmed = false,
                             FirstName = "Asena",
                             IdentityNumber = "12341231257",
                             LastName = "Kavruk",
                             LockoutEnabled = true,
-                            NormalizedEmail = "ASENASULUN@GMAIL.COM",
+                            NormalizedEmail = "ASENADENEME@HOTMAIL.COM",
                             NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sevnur",
-                            SecurityStamp = "173a2e70-a53d-4a7d-9d97-2ae2c6c7a020",
+                            SecurityStamp = "c17ccf50-4628-42e4-90f0-29dea93cc167",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin"
@@ -491,7 +487,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 {
                     b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", "User")
                         .WithOne("Apartment")
-                        .HasForeignKey("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", "UserId");
+                        .HasForeignKey("PaparaBootcampBitirmeProjesi.Core.Entities.Apartment", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

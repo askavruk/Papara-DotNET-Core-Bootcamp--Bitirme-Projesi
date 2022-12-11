@@ -26,7 +26,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        void UpdateUser(UpdateUserDTO model);
+        Task UpdateUser(UpdateUserDTO model);
 
         /// <summary>
         /// It calls all users with their apartment
