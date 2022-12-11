@@ -31,8 +31,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Context
 
             builder.Entity<User>().HasOne(a => a.Apartment).WithOne(a => a.User).HasForeignKey<Apartment>(c => c.UserId);
 
-            //Admin
-            User user = new User();
+
+    //Admin
+    User user = new User();
             user.Id = "9a0d3776-5392-456c-8f81-42a1811d5129";
             user.UserName = "admin";
             user.FirstName = "Asena";

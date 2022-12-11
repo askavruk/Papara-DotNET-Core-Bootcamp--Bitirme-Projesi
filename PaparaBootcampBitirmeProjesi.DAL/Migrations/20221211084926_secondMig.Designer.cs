@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PaparaBootcampBitirmeProjesi.DAL.Context;
 
 namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221211084926_secondMig")]
+    partial class secondMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,14 +66,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         new
                         {
                             Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0",
-                            ConcurrencyStamp = "ec6a088c-13f4-471e-a08b-d7b3fa718e4c",
+                            ConcurrencyStamp = "2de023ba-246b-4639-be95-1d50531595c3",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b0d8eb99-624b-481d-b521-42959f53ce71",
-                            ConcurrencyStamp = "c76326be-78e6-46d0-b864-8d812b6f3c43",
+                            Id = "6534301d-25d7-4f44-9338-8d88f4e147bf",
+                            ConcurrencyStamp = "b050fd2e-4b73-4441-8d55-b6f183167614",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -330,6 +332,11 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SecondName")
                         .HasColumnType("nvarchar(max)");
 
@@ -366,8 +373,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         {
                             Id = "9a0d3776-5392-456c-8f81-42a1811d5129",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c25fe287-0408-4967-9d9b-06f2466da769",
-                            CreationDate = new DateTime(2022, 12, 11, 11, 53, 43, 55, DateTimeKind.Local).AddTicks(1915),
+                            ConcurrencyStamp = "91a6bf49-ab8b-4f21-be25-a1cf89fda449",
+                            CreationDate = new DateTime(2022, 12, 11, 11, 49, 24, 190, DateTimeKind.Local).AddTicks(9748),
                             Email = "asenasulun@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Asena",
@@ -378,7 +385,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                             NormalizedUserName = "ADMIN",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sevnur",
-                            SecurityStamp = "173a2e70-a53d-4a7d-9d97-2ae2c6c7a020",
+                            SecurityStamp = "90e87f50-02e6-4655-89d7-9b3c34b78fd8",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin"

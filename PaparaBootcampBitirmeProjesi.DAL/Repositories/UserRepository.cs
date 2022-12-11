@@ -21,7 +21,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 
         public User FindUserById(string id)
         {
-            return dbContext.Users.FirstOrDefault(x => x.Id == id);
+            return dbContext.Users.Include(x => x.Apartment).FirstOrDefault(x => x.Id == id);
         }
 
         public List<User> GetAllOnTheBlock(string block)

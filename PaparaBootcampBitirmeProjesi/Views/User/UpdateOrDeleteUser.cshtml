@@ -55,7 +55,7 @@
                             <td>@item.PhoneNumber</td>
                             <td>@item.Vehicles</td>
                             <td><a asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</a></td>
-                            <td><a asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Sil</a></td>
+                            <td><a asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini silmek istediğinize emin misiniz?')">Sil</a></td>
                         </tr>
                     }
                 </tbody>

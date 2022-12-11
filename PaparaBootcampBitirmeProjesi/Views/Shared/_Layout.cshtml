@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Apartman Yonetim Sistemi</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,11 +38,11 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            @*<hr class="sidebar-divider my-0">*@
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            @*<hr class="sidebar-divider">*@
 
             <!-- Heading -->
             @*<div class="sidebar-heading">
@@ -91,7 +91,7 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>*@
-            </li>
+            @*</li>*@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -110,7 +110,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            @*<hr class="sidebar-divider d-none d-md-block">*@
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -280,16 +280,17 @@
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        @*<div class="topbar-divider d-none d-sm-block"></div>*@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">############</span>
+                           @* <a class="nav-link dropdown-toggle" asp-action="Login" asp-controller="Account" id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*@
+                               <a class="nav-link dropdown-toggle" asp-action="Login" asp-controller="Account" class="nav-link">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Çıkış Yap</span>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            @*<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -300,7 +301,7 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
-                            </div>
+                            </div>*@
                         </li>
 
                     </ul>
@@ -361,7 +362,6 @@
 
     </div>
     <!-- End of Content Wrapper -->
-    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

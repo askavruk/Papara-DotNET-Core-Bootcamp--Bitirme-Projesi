@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly IUserService adminService;

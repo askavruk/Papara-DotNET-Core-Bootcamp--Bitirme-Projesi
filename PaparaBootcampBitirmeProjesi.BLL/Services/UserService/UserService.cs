@@ -134,9 +134,10 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             }
         }
 
-        public void  UpdateUser(UpdateUserDTO model)
+        public void UpdateUser(UpdateUserDTO model)
         {
             var user = userRepository.FindUserById(model.Id);
+            user.UpdateDate = DateTime.Now;
             mapper.Map(model, user);
             userRepository.Update(user);
         }
