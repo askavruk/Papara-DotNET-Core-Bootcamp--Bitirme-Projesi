@@ -32,19 +32,6 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
             table.Add(entity);
             await dbContext.SaveChangesAsync();
         }
-
-
-        /// <summary>
-        /// Passive the Status of the entity and updates the DeleteDate.
-        /// </summary>
-        /// <param name="entity"></param>
-        public async Task Delete(T entity)
-        {
-            entity.DeleteDate = DateTime.Now;
-            entity.Status = Status.Passive;
-            await dbContext.SaveChangesAsync();
-        }
-
         /// <summary>
         /// Lists all entities with Active Status
         /// </summary>
@@ -54,15 +41,5 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
             return await table.Where(x => x.Status == Status.Active).ToListAsync();
         }
 
-
-        /// <summary>
-        /// Modifies the entity's Status and updates the Entity.
-        /// </summary>
-        /// <param name="entity"></param>
-        public void Update(T entity)
-        {
-            dbContext.Entry<T>(entity).State = EntityState.Modified;
-            dbContext.SaveChanges();
-        }
     }
 }

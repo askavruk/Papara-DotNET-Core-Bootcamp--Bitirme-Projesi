@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
@@ -19,17 +21,15 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         {
             return View();
         }
-        public IActionResult BlockAList(string BlockA)
+        public IActionResult BlockAList()
         {
-            BlockA = "A";
-            var blokAUsers = userService.GetAllUsersOnTheBlock(BlockA);
+            var blokAUsers = userService.GetAllUsersOnTheABlock();
             return View(blokAUsers);
         }
 
-        public IActionResult BlockBList(string BlockB)
+        public IActionResult BlockBList()
         {
-            BlockB = "B";
-            var blokBUsers = userService.GetAllUsersOnTheBlock(BlockB);
+            var blokBUsers = userService.GetAllUsersOnTheBBlock();
             return View(blokBUsers);
         }
 
@@ -52,6 +52,8 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             else
                await userService.CreateUser(createUserDTO);
             return RedirectToAction("Index");
+
+            
         }
 
         public IActionResult UpdateOrDeleteUser()
@@ -61,9 +63,9 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         }
 
 
-        public IActionResult UpdateUser(string id)
+        public async Task<IActionResult> UpdateUser(string id)
         {
-            UpdateUserDTO updateUserDTO = userService.GetById(id);
+            UpdateUserDTO updateUserDTO =await userService.GetById(id);
             return View(updateUserDTO);
         }
 

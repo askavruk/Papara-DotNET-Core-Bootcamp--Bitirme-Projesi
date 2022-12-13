@@ -3,6 +3,7 @@
 }
 
 @using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
+@using PaparaBootcampBitirmeProjesi.Core.Enums
 
 @model CreateUserDTO
 
@@ -39,13 +40,23 @@
                 <label asp-for="Email" class="control-label">Email</label>
                 <input asp-for="Email" type="email" class="form-control" placeholder="E-Mail" />
             </div>
-@*            <div class="form-group">
-                <label asp-for="Apartment.Id">Id</label>
-                <input asp-for="Apartment.Id" type="text" class="form-control" placeholder="Id">
-            </div>*@
             <div class="form-group">
-                <label asp-for="Apartment.Block" class="control-label">Blok</label>
-                <input asp-for="Apartment.Block" type="text" class="form-control" placeholder="Blok" />
+               <label asp-for="Apartment.Resident">Daire Sakini Durumu</label>
+                <select asp-for="Apartment.Resident" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ResidentType>()">
+                    <option>Lütfen daire sakini tipini seçiniz...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.Type">Daire Tipi</label>
+                <select asp-for="Apartment.Type" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ApartmentType>()">
+                    <option>Lütfen daire tipini seçiniz...</option>
+                </select>
+            </div>         
+            <div class="form-group">
+                <label asp-for="Apartment.Block">Daire Tipi</label>
+                <select asp-for="Apartment.Block" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<Block>()">
+                    <option>Lütfen bloğu seçiniz...</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Apartment.Floor" class="control-label">Kat</label>
@@ -56,9 +67,10 @@
                 <input asp-for="Apartment.ApartmentNo" type="text" class="form-control" placeholder="Daire No" />
             </div>
             <div class="form-group">
-                <label asp-for="Apartment.Type" class="control-label">Daire Tipi</label>
-                <input asp-for="Apartment.Type" type="text" class="form-control" placeholder="Daire Tipi" />
+                <label asp-for="Apartment.ApartmentNo" class="control-label">Daire No</label>
+                <input asp-for="Apartment.ApartmentNo" type="text" class="form-control" placeholder="Daire No" />
             </div>
+            
 
         </div>
         <!-- /.card-body -->

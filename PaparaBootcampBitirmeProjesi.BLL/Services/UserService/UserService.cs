@@ -36,18 +36,28 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
         public async Task CreateUser(CreateUserDTO createUserDTO)
         {
-            User user = new User();
+            User user = new User()
+            {
+                UserName = createUserDTO.FirstName + createUserDTO.LastName
+            };
             mapper.Map(createUserDTO, user);
             string password = Guid.NewGuid().ToString();
-            await userManager.CreateAsync(user, password);
-            //Email sender ile kullanıcıya şifreyi mail at
-            emailSender.SendEmail(user.Email, "New Password", $"Here your password,please do not share your password nobody...\nPassword : {password}");
+            //await userRepository.Create(user);
+            if (user.Apartment.IsFull)
+            {
+                throw new Exception("Daire dolu! Lütfen boş daire seçimi yapınız.");
+            }
+            IdentityResult result = await userManager.CreateAsync(user, password);
+            if (result.Succeeded)
+                emailSender.SendEmail(user.Email, "New Password", $"Here your password,please do not share your password nobody...\nPassword : {password}"); //Email sender ile kullanıcıya şifreyi mail at
+            else
+                throw new Exception("User did not create");
         }
 
         public async Task DeleteUser(string id)
         {
             User user = userRepository.FindUserById(id);
-            if (user == null) 
+            if (user == null)
                 throw new ArgumentException("Id not found");
             user.Status = Status.Passive;
             user.DeleteDate = DateTime.Now;
@@ -81,21 +91,31 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             return usersWithApartment;
         }
 
-        public List<GetUsersWithApartmentDTO> GetAllUsersOnTheBlock(string block)
+        public List<GetUsersWithApartmentDTO> GetAllUsersOnTheABlock()
         {
             List<User> users = new List<User>();
             List<GetUsersWithApartmentDTO> allUserOnSameBlock = new List<GetUsersWithApartmentDTO>();
-            users = userRepository.GetAllOnTheBlock(block);
+            users = userRepository.GetAllOnTheABlock();
             mapper.Map(users, allUserOnSameBlock);
 
             return allUserOnSameBlock;
         }
 
-        public UpdateUserDTO GetById(string id)
+        public List<GetUsersWithApartmentDTO> GetAllUsersOnTheBBlock()
+        {
+            List<User> users = new List<User>();
+            List<GetUsersWithApartmentDTO> allUserOnSameBlock = new List<GetUsersWithApartmentDTO>();
+            users = userRepository.GetAllOnTheBBlock();
+            mapper.Map(users, allUserOnSameBlock);
+
+            return allUserOnSameBlock;
+        }
+
+
+        public async Task<UpdateUserDTO> GetById(string id)
         {
             UpdateUserDTO updateUser = new UpdateUserDTO();
-            var user = userRepository.FindUserById(id);
-            //var user = userManager.FindByIdAsync(id); // ıdentityten gelen metotları kullanmak daha hızlı işlem ve databse normalize kısmını otomatik yapıyor.
+            var user = await userManager.FindByIdAsync(id);//Identityten gelen metotları kullanmak daha hızlı işlem yapmamız sağlıyor ve database normalize kısmını otomatik yapıyor.
             if (user != null)
             {
                 if (user.Status == Status.Active)
@@ -142,10 +162,11 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
         public async Task UpdateUser(UpdateUserDTO model)
         {
-            var user = await userManager.FindByIdAsync(model.Id);
+            //var user = await userManager.FindByIdAsync(model.Id);
+            var user = userRepository.FindUserById(model.Id);
             user.UpdateDate = DateTime.Now;
             mapper.Map(model, user);
-            IdentityResult result= await userManager.UpdateAsync(user);
+            IdentityResult result = await userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
 

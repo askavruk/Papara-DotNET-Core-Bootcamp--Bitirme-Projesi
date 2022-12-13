@@ -24,14 +24,19 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
             return dbContext.Users.Include(x => x.Apartment).FirstOrDefault(x => x.Id == id);
         }
 
-        public List<User> GetAllOnTheBlock(string block)
+        public List<User> GetAllOnTheABlock()
         {
-            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == block).Include(x => x.Apartment).ToList();
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.A).Include(x => x.Apartment).ToList();
+        }
+
+        public List<User> GetAllOnTheBBlock()
+        {
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.B).Include(x => x.Apartment).ToList();
         }
 
         public List<User> GetAllWithApartment()
         {
-            return dbContext.Users.Where(x => x.Status == Status.Active).Include(a => a.Apartment).ToList();
+            return dbContext.Users.Where(x => x.Status == Status.Active).Include(a => a.Apartment).Include(a => a.Vehicles).ToList();
         }
     }
 }

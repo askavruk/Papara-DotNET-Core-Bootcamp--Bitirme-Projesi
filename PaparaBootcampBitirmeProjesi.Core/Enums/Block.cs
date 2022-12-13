@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Core.Enums
 {
-    public enum ResidentType
+    public enum Block
     {
-        Kiracı=1,
-        EvSahibi
+        A=1,
+        B
     }
 }

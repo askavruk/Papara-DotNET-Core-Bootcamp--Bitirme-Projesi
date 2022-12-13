@@ -11,8 +11,8 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public int ApartmentNo { get; set; }
-        public string Block { get; set; }
-        public string Type { get; set; }
+        public Block Block { get; set; }
+        public ApartmentType Type { get; set; }
         public int Floor { get; set; }
         public ResidentType Resident { get; set; }
         public bool IsFull { get; set; } = true;

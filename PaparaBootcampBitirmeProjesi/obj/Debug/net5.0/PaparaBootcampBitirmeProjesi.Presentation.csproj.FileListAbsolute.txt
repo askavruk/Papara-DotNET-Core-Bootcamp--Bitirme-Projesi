@@ -172,3 +172,4 @@ C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeP
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.csproj.CopyComplete
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.genruntimeconfig.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\ref\PaparaBootcampBitirmeProjesi.Presentation.dll
+C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.MvcApplicationPartsAssemblyInfo.cs

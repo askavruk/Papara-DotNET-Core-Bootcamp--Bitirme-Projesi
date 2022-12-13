@@ -19,7 +19,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// </summary>
         /// <param name="id"></param>
         /// <returns>UpdateUserDTO</returns>
-        UpdateUserDTO GetById(string id);
+        Task<UpdateUserDTO> GetById(string id);
 
         /// <summary>
         /// It is update according to model parameter(UpdateUserDTO)
@@ -33,7 +33,20 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// </summary>
         /// <returns></returns>
         List<GetUsersWithApartmentDTO> GetAllUsers();
-        List<GetUsersWithApartmentDTO> GetAllUsersOnTheBlock(string block);
+
+        /// <summary>
+        /// It calss all user by A block
+        /// </summary>
+        /// <param name="block"></param>
+        /// <returns></returns>
+        List<GetUsersWithApartmentDTO> GetAllUsersOnTheABlock();
+
+        /// <summary>
+        /// It calss all user by B block
+        /// </summary>
+        /// <param name="block"></param>
+        /// <returns></returns>
+        List<GetUsersWithApartmentDTO> GetAllUsersOnTheBBlock();
 
         Task DeleteUser(string id);
 
@@ -44,6 +57,12 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// <returns></returns>
         Task<object> Login(LoginDTO isLogin);
 
+
+        /// <summary>
+        /// If forgot your password it send to new password your email
+        /// </summary>
+        /// <param name="forgotPassword"></param>
+        /// <returns></returns>
         Task<bool> ForgotPassword(ForgotPasswordDTO forgotPassword);
     }
 }

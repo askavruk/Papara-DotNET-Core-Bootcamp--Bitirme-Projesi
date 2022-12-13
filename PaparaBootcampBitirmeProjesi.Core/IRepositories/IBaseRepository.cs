@@ -10,8 +10,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
     public interface IBaseRepository<T> where T : IBaseEntity
     {
         Task Create(T entity);
-        void Update(T entity);
-        Task Delete(T entity);
         Task<List<T>> GetAll();
     }
 }

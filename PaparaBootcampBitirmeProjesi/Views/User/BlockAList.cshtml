@@ -14,7 +14,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                 <thead>
+                <thead>
                     <tr>
                         <th>Blok</th>
                         <th>Daire</th>
@@ -32,6 +32,7 @@
                             <td>
                                 @if (item.Apartment != null)
                                 {
+
                                     @item.Apartment.Block
                                 }
                             </td>
@@ -51,7 +52,12 @@
                             <td>@item.FirstName @item.SecondName @item.LastName</td>
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
-                            <td>@item.Vehicles</td>
+                              <td>
+                                @if (item.Vehicles != null)
+                                {
+                                    @item.Vehicles
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>
