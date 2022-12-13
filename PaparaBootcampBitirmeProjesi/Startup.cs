@@ -52,6 +52,7 @@ namespace PaparaBootcampBitirmeProjesi
             //repositories
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IApartmentRepository, ApartmentRepository>();
 
             //services
             services.AddScoped<IUserService, UserService>();

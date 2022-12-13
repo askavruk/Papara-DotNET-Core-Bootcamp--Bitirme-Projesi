@@ -20,18 +20,20 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
     public class UserService : IUserService
     {
         private readonly IUserRepository userRepository;
+        private readonly IApartmentRepository apartmentRepository;
         private readonly IMapper mapper;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly IEmailSender emailSender;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        public UserService(IUserRepository userRepository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, IApartmentRepository apartmentRepository)
         {
             this.userRepository = userRepository;
             this.mapper = mapper;
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender;
+            this.apartmentRepository = apartmentRepository;
         }
 
         public async Task CreateUser(CreateUserDTO createUserDTO)
@@ -43,13 +45,16 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             mapper.Map(createUserDTO, user);
             string password = Guid.NewGuid().ToString();
             //await userRepository.Create(user);
-            if (user.Apartment.IsFull)
+
+            var apartment = apartmentRepository.ApartmentIsFull(user.Apartment);
+
+            if (apartment != null)
             {
                 throw new Exception("Daire dolu! Lütfen boş daire seçimi yapınız.");
             }
             IdentityResult result = await userManager.CreateAsync(user, password);
             if (result.Succeeded)
-                emailSender.SendEmail(user.Email, "New Password", $"Here your password,please do not share your password nobody...\nPassword : {password}"); //Email sender ile kullanıcıya şifreyi mail at
+                emailSender.SendEmail(user.Email, "Yeni şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\nPassword : {password}"); //Email sender ile kullanıcıya şifreyi mail at
             else
                 throw new Exception("User did not create");
         }
