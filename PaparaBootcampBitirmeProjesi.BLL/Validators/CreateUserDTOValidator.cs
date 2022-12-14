@@ -17,7 +17,10 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Validators
             RuleFor(a => a.FirstName).NotEmpty().NotNull().WithMessage("Firstname cannot be empty!");
             RuleFor(a => a.LastName).NotEmpty().NotNull().WithMessage("Lastname cannot be empty!");
             RuleFor(a => a.Apartment.ApartmentNo).NotEmpty().NotNull().WithMessage("Apartment no cannot be empty!");
+            RuleFor(a => a.Apartment.Resident).NotEmpty().NotNull().WithMessage("Apartment resident cannot be empty!");
             RuleFor(a => a.Apartment.Block).NotEmpty().NotNull().WithMessage("Block cannot be empty!");
+            RuleFor(a => a.Apartment.Type).NotEmpty().NotNull().WithMessage("Apartment type cannot be empty!");
+            RuleFor(a => a.Apartment.Floor).NotEmpty().NotNull().WithMessage("Floor cannot be empty!");
             RuleFor(a => a.PhoneNumber).NotEmpty().NotNull().WithMessage("Phone number cannot be empty!");
             RuleFor(a => a.PhoneNumber).MaximumLength(10).WithMessage("Phone number must be 10 numbers.").MinimumLength(10).WithMessage("Phone number must be 10 numbers.");
         }

@@ -38,25 +38,37 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
         public async Task CreateUser(CreateUserDTO createUserDTO)
         {
-            User user = new User()
+            CreateUserDTOValidator validations = new CreateUserDTOValidator();
+            ValidationResult valResult = validations.Validate(createUserDTO);
+            if (valResult.IsValid)
             {
-                UserName = createUserDTO.FirstName + createUserDTO.LastName
-            };
-            mapper.Map(createUserDTO, user);
-            string password = Guid.NewGuid().ToString();
-            //await userRepository.Create(user);
+                User user = new User()
+                {
+                    UserName = createUserDTO.FirstName + createUserDTO.LastName
+                };
+                mapper.Map(createUserDTO, user);
+                string password = Guid.NewGuid().ToString();
+                //await userRepository.Create(user);
 
-            var apartment = apartmentRepository.ApartmentIsFull(user.Apartment);
+                var apartment = apartmentRepository.ApartmentIsFull(user.Apartment);
 
-            if (apartment != null)
-            {
-                throw new Exception("Daire dolu! Lütfen boş daire seçimi yapınız.");
+                if (apartment != null)
+                {
+                    throw new Exception("Daire dolu! Lütfen boş daire seçimi yapınız.");
+                }
+                IdentityResult result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                    emailSender.SendEmail(user.Email, "Şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\n Şifre : {password}"); //Email sender ile kullanıcıya şifreyi mail at
             }
-            IdentityResult result = await userManager.CreateAsync(user, password);
-            if (result.Succeeded)
-                emailSender.SendEmail(user.Email, "Yeni şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\nPassword : {password}"); //Email sender ile kullanıcıya şifreyi mail at
+
             else
-                throw new Exception("User did not create");
+            {
+                string msg = string.Empty;
+                foreach (var err in valResult.Errors)
+                {
+                    msg += $"{err.PropertyName} - {err.ErrorMessage} \n";
+                }
+            }              
         }
 
         public async Task DeleteUser(string id)
@@ -79,7 +91,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 if (user == null) return false;
                 await userManager.RemovePasswordAsync(user);
                 string newPassword = Guid.NewGuid().ToString();
-                emailSender.SendEmail(user.Email, "Change Password", $"Here your password,please do not share your password nobody...\nPassword : {newPassword}");
+                emailSender.SendEmail(user.Email, "Yeni şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\n Şifre : {newPassword}");
                 IdentityResult response = await userManager.AddPasswordAsync(user, newPassword);
                 return response.Succeeded ? true : false;
             }
@@ -120,7 +132,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         public async Task<UpdateUserDTO> GetById(string id)
         {
             UpdateUserDTO updateUser = new UpdateUserDTO();
-            var user = await userManager.FindByIdAsync(id);//Identityten gelen metotları kullanmak daha hızlı işlem yapmamız sağlıyor ve database normalize kısmını otomatik yapıyor.
+            var user = await userManager.FindByIdAsync(id);//Identityten gelen metotları kullanmak daha hızlı işlem yapmamızı sağlıyor ve databasedeki normalize kısmını otomatik yapıyor.
             if (user != null)
             {
                 if (user.Status == Status.Active)
@@ -171,11 +183,12 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             var user = userRepository.FindUserById(model.Id);
             user.UpdateDate = DateTime.Now;
             mapper.Map(model, user);
-            IdentityResult result = await userManager.UpdateAsync(user);
-            if (result.Succeeded)
-            {
+            //IdentityResult result =
+            await userManager.UpdateAsync(user);
+            //if (result.Succeeded)
+            //{
 
-            }
+            //}
         }
 
 

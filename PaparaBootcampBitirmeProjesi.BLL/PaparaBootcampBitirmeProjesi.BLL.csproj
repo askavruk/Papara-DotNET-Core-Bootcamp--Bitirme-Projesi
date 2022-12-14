@@ -25,4 +25,8 @@
     <ProjectReference Include="..\PaparaBootcampBitirmeProjesi.Core\PaparaBootcampBitirmeProjesi.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\MessageDTO\" />
+  </ItemGroup>
+
 </Project>

@@ -19,6 +19,7 @@
             <div class="form-group">
                 <label asp-for="FirstName">İsim</label>
                 <input asp-for="FirstName" type="text" class="form-control" placeholder="İsim">
+                <span asp-validation-for="FirstName"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="SecondName" class="control-label">İkinci İsim</label>
@@ -27,49 +28,58 @@
             <div class="form-group">
                 <label asp-for="LastName" class="control-label">Soyisim</label>
                 <input asp-for="LastName" type="text" class="form-control" placeholder="Soyisim" />
+                <span asp-validation-for="LastName"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="IdentityNumber" class="control-label">TC Kimlik No</label>
                 <input asp-for="IdentityNumber" type="text" class="form-control" placeholder="TC Kimlik No" />
+                <span asp-validation-for="IdentityNumber"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label">Phone</label>
                 <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Telefon Numarası" />
+                <span asp-validation-for="PhoneNumber"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
                 <input asp-for="Email" type="email" class="form-control" placeholder="E-Mail" />
+                <span asp-validation-for="Email"></span><br />
             </div>
             <div class="form-group">
                <label asp-for="Apartment.Resident">Daire Sakini Durumu</label>
                 <select asp-for="Apartment.Resident" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ResidentType>()">
                     <option>Lütfen daire sakini tipini seçiniz...</option>
                 </select>
+                <span asp-validation-for="Apartment.Resident"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="Apartment.Type">Daire Tipi</label>
                 <select asp-for="Apartment.Type" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ApartmentType>()">
                     <option>Lütfen daire tipini seçiniz...</option>
                 </select>
+                <span asp-validation-for="Apartment.Type"></span><br />
             </div>         
             <div class="form-group">
                 <label asp-for="Apartment.Block">Daire Tipi</label>
                 <select asp-for="Apartment.Block" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<Block>()">
                     <option>Lütfen bloğu seçiniz...</option>
                 </select>
+                <span asp-validation-for="Apartment.Block"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="Apartment.Floor" class="control-label">Kat</label>
                 <input asp-for="Apartment.Floor" type="text" class="form-control" placeholder="Kat" />
+                <span asp-validation-for="Apartment.Floor"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="Apartment.ApartmentNo" class="control-label">Daire No</label>
                 <input asp-for="Apartment.ApartmentNo" type="text" class="form-control" placeholder="Daire No" />
+                <span asp-validation-for="Apartment.ApartmentNo"></span><br />
             </div>
-            @*<div class="form-group">
-                <label asp-for="Apartment.ApartmentNo" class="control-label">Daire No</label>
-                <input asp-for="Apartment.ApartmentNo" type="text" class="form-control" placeholder="Daire No" />
-            </div>*@
+            <div class="form-group">
+                <label asp-for="Vehicles" class="control-label">Daire No</label>
+                <input asp-for="Vehicles" type="text" class="form-control" placeholder="Daire No" />
+            </div>
             
 
         </div>
