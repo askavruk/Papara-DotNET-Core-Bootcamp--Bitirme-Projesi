@@ -28,11 +28,12 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginDTO isLogin)
         {
-            var result = await userService.Login(isLogin);
-            if (result is string)
-                return NotFound(result);
-            else
+            if (ModelState.IsValid)
+            {
+                var result = await userService.Login(isLogin);
                 return RedirectToAction("Index", "User");
+            }
+             return View("Login");
         }
 
         [HttpGet]
@@ -44,13 +45,11 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO forgotPassword)
         {
-            bool result = await userService.ForgotPassword(forgotPassword);
-            if (!result)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("email", "Please give correct email...");
-                return View(forgotPassword);
+                var result = await userService.ForgotPassword(forgotPassword);
             }
-            //ViewBag.email = "Check your email, password changed successfully";
+
             return RedirectToAction("Login");
         }
     }

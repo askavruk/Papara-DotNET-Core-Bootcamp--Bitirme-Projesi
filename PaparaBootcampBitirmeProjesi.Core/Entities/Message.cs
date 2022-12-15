@@ -9,15 +9,12 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Message : IBaseEntity
     {
-        public Message()
-        {
-            Users = new List<User>();
-        }
         public string MessageId { get; set; }
         public string SenderMail { get; set; }
-        public string RecevierMail { get; set; }
+        public string RecevierMail{ get; set; }
         public string Subject { get; set; }
         public string MessageContent { get; set; }
+        public bool IsRead { get; set; }
 
         //IBaseEntity Implementation
         public DateTime CreationDate { get; set; }
@@ -26,6 +23,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public Status Status { get; set; } = Status.Active;
 
         //Relations
-        public List<User> Users { get; set; }
+        public User Users { get; set; }
     }
 }

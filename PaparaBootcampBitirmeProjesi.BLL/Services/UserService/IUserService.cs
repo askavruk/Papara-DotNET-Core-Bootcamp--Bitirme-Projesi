@@ -63,6 +63,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
         /// </summary>
         /// <param name="forgotPassword"></param>
         /// <returns></returns>
-        Task<bool> ForgotPassword(ForgotPasswordDTO forgotPassword);
+        Task<GenericResponse<string>> ForgotPassword(ForgotPasswordDTO forgotPassword);
     }
 }

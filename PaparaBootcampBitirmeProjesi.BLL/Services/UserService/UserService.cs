@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using PaparaBootcampBitirmeProjesi.BLL.EmailSender;
+using PaparaBootcampBitirmeProjesi.BLL.Extensions;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
@@ -38,6 +40,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
         public async Task CreateUser(CreateUserDTO createUserDTO)
         {
+            GenericResponse<string> response = new();
             CreateUserDTOValidator validations = new CreateUserDTOValidator();
             ValidationResult valResult = validations.Validate(createUserDTO);
             if (valResult.IsValid)
@@ -64,14 +67,10 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
 
             else
             {
-                string msg = string.Empty;
-                foreach (var err in valResult.Errors)
-                {
-                    msg += $"{err.PropertyName} - {err.ErrorMessage} \n";
-                }
-            }              
+                response.ValidationMessages = valResult.Errors.GetValidationErrorMessage();
+                response.Data = "Lütfen gerekli tüm alanları doldurun!";
+            }
         }
-
         public async Task DeleteUser(string id)
         {
             User user = userRepository.FindUserById(id);
@@ -82,21 +81,37 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             await userManager.UpdateAsync(user);
         }
 
-        public async Task<bool> ForgotPassword(ForgotPasswordDTO forgotPassword)
+        public async Task<GenericResponse<string>> ForgotPassword(ForgotPasswordDTO forgotPassword)
         {
+            GenericResponse<string> response = new();
             ForgotPasswordDTOValidator val = new ForgotPasswordDTOValidator();
             ValidationResult result = val.Validate(forgotPassword);
-            if (result.IsValid)
+
+            if (!result.IsValid)
+            {
+                response.ValidationMessages = result.Errors.GetValidationErrorMessage();
+                response.Data = "Lütfen doğru bir e-mail adresi girişi yapın!";
+                return response;
+            }
+            else
             {
                 User user = await userManager.FindByEmailAsync(forgotPassword.Email);
-                if (user == null) return false;
+                if (user == null)
+                {
+                    response.Data = "Böyle bir kullanıcı bulunamadı.";
+                    return response;
+                }
                 await userManager.RemovePasswordAsync(user);
                 string newPassword = Guid.NewGuid().ToString();
                 emailSender.SendEmail(user.Email, "Yeni şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\n Şifre : {newPassword}");
-                IdentityResult response = await userManager.AddPasswordAsync(user, newPassword);
-                return response.Succeeded ? true : false;
+                IdentityResult ıdentityResult = await userManager.AddPasswordAsync(user, newPassword);
+
+                if (ıdentityResult.Succeeded)
+                {
+                    return new GenericResponse<string> { Data = "Yeni şifre e-mail adresinize gönderildi!" };
+                }
+                return new GenericResponse<string> { Data = "Yeni şifre e-mailinize adresinize gönderilemedi!" };
             }
-            return false;
         }
 
         public List<GetUsersWithApartmentDTO> GetAllUsers()
@@ -141,55 +156,54 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 return updateUser;
             }
             else
-                throw new Exception("User not found");
+                throw new Exception("Kullanıcı bulunamadı");
         }
 
 
         public async Task<object> Login(LoginDTO isLogin)
         {
+            GenericResponse<string> response = new GenericResponse<string>();
             LoginDTOValidator validator = new LoginDTOValidator();
             ValidationResult result = validator.Validate(isLogin);
+
             if (result.IsValid)
             {
                 User user = await userManager.FindByEmailAsync(isLogin.Email);
-
-                if (user == null) return "Please check your email and password...";
-                else
-                {
                     bool check = await userManager.CheckPasswordAsync(user, isLogin.Password);
                     if (check)
                     {
                         await signInManager.PasswordSignInAsync(user, isLogin.Password, false, false);
                         return user;
-
                     }
-                    return "Please check your email and password...";
-                }
+                    return "Yanlış şifre ya da e-mail! Lütfen şifrenizi ya da e-mail adresinizi kontrol edin.";
             }
             else
             {
-                //result.Errors.getvalidationErrors(); => Extension method olarak yönetilebilir.
-                string msg = string.Empty;
-                foreach (var err in result.Errors)
-                {
-                    msg += $"{err.PropertyName} - {err.ErrorMessage} \n";
-                }
-                return msg;
+                response.ValidationMessages = result.Errors.GetValidationErrorMessage();
+                response.Data = "Lütfen gerekli tüm alanları doldurun!";
+                return response;
             }
         }
 
-        public async Task UpdateUser(UpdateUserDTO model)
+        public async Task UpdateUser(UpdateUserDTO updateUserDTO)
         {
-            //var user = await userManager.FindByIdAsync(model.Id);
-            var user = userRepository.FindUserById(model.Id);
-            user.UpdateDate = DateTime.Now;
-            mapper.Map(model, user);
-            //IdentityResult result =
-            await userManager.UpdateAsync(user);
-            //if (result.Succeeded)
-            //{
+            GenericResponse<string> response = new GenericResponse<string>();
+            UpdateUserDTOValidator validator = new UpdateUserDTOValidator();
+            ValidationResult result = validator.Validate(updateUserDTO);
 
-            //}
+            if (result.IsValid)
+            {
+                var user = userRepository.FindUserById(updateUserDTO.Id);
+                user.UpdateDate = DateTime.Now;
+                mapper.Map(updateUserDTO, user);
+                await userManager.UpdateAsync(user);
+            }
+            else
+            {
+                response.ValidationMessages = result.Errors.GetValidationErrorMessage();
+                response.Data = "Lütfen gerekli tüm alanları doldurun!";
+            }
+
         }
 
     }

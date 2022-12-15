@@ -25,19 +25,15 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             this.mapper = mapper;
         }
 
-
-        public void CreateMessage(CreateMessageDTO createMessage)
+        public async Task CreateMessage(CreateMessageDTO createMessage)
         {
             CreateMessageDTOValidator validations = new CreateMessageDTOValidator();
             ValidationResult valResult = validations.Validate(createMessage);
             if (valResult.IsValid)
             {
-                Message message = new Message()
-                {
-                    SenderMail = 
-                };
+                Message message = new Message();
                 mapper.Map(createMessage, message);
-                messageRepository.Create(message);
+                await messageRepository.Create(message);
             }          
         }
 

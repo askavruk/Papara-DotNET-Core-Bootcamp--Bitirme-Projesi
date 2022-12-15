@@ -23,22 +23,35 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         {
             return View();
         }
+
         public IActionResult BlockAList()
         {
-            var blokAUsers = userService.GetAllUsersOnTheABlock();
-            return View(blokAUsers);
+            if (ModelState.IsValid)
+            {
+                var blokAUsers = userService.GetAllUsersOnTheABlock();
+                return View(blokAUsers);
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult BlockBList()
         {
-            var blokBUsers = userService.GetAllUsersOnTheBBlock();
-            return View(blokBUsers);
+            if (ModelState.IsValid)
+            {
+                var blokBUsers = userService.GetAllUsersOnTheBBlock();
+                return View(blokBUsers); 
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult AllUsers()
         {
-            var allOfThem = userService.GetAllUsers();
-            return View(allOfThem);
+            if (ModelState.IsValid)
+            {
+                var allOfThem = userService.GetAllUsers();
+                return View(allOfThem); 
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult CreateUser()
@@ -49,39 +62,54 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDTO createUserDTO)
         {
-            if (createUserDTO == null)
-                return NotFound();
-            else
-               await userService.CreateUser(createUserDTO);
-            return RedirectToAction("Index");
-
-            
+            if (ModelState.IsValid)
+            {
+                await userService.CreateUser(createUserDTO);
+                return RedirectToAction("Index"); 
+            }
+            return View();
         }
 
         public IActionResult UpdateOrDeleteUser()
         {
-            var allOfThem = userService.GetAllUsers();
-            return View(allOfThem);
+            if (ModelState.IsValid)
+            {
+                var allOfThem = userService.GetAllUsers();
+                return View(allOfThem); 
+            }
+            return View();
         }
 
 
         public async Task<IActionResult> UpdateUser(string id)
         {
-            UpdateUserDTO updateUserDTO =await userService.GetById(id);
-            return View(updateUserDTO);
+            if (ModelState.IsValid)
+            {
+                UpdateUserDTO updateUserDTO = await userService.GetById(id);
+                return View(updateUserDTO); 
+            }
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateUser(UpdateUserDTO updateUser)
         {
-            await userService.UpdateUser(updateUser);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                await userService.UpdateUser(updateUser);
+                return RedirectToAction("Index"); 
+            }
+            return View();
         }
 
         public async Task<IActionResult> DeleteUser(string id)
         {
-            await userService.DeleteUser(id);
-            return RedirectToAction("UpdateOrDeleteUser");
+            if (ModelState.IsValid)
+            {
+                await userService.DeleteUser(id);
+                return RedirectToAction("UpdateOrDeleteUser"); 
+            }
+            return View();
         }
 
 

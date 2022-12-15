@@ -15,7 +15,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
 
         GetMessageDetailDTO GetMessageDetails(string id);
 
-        void CreateMessage(CreateMessageDTO createMessage);
+        Task CreateMessage(CreateMessageDTO createMessage);
 
         void DeleteMessage(string id);
     }

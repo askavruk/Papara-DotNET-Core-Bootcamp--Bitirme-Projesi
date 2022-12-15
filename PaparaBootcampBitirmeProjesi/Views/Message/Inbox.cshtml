@@ -23,7 +23,7 @@
             <th>@item.SenderMail</th>
             <th>@item.Subject</th>
             <th>@item.CreationDate</th>
-            <th>Sil</th>
+            <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini silmek istediğinize emin misiniz?')">Sil</a></th>
             <th>Mesajı Aç</th>
         </tr>
     }

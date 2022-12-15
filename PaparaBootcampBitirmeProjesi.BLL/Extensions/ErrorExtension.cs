@@ -11,14 +11,15 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Extensions
 {
     public static class ErrorExtension
     {
-        public static string GetValidationErrorMessage(this ValidationResult validationResults)
+        public static List<string> GetValidationErrorMessage(this List<ValidationFailure> failures)
         {
-            string msg = string.Empty;
-            foreach (var err in validationResults.Errors)
+            List<string> response = new(); 
+            
+            foreach (var err in failures)
             {
-                msg += $"{err.PropertyName} - {err.ErrorMessage} \n";
+                response.Add($"{err.PropertyName} - {err.ErrorMessage} \n");
             }
-            return msg;
+            return response;
         }
     }
 }
