@@ -12,8 +12,8 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
         List<Message> GetListInbox(string mail);
         List<Message> GetListSendbox(string mail);
 
-        void DeleteMessage(Message message);
+        public Message FindMessageById(string id);
 
-        void UpdateMessage(Message message);
+        void DeleteMessage(Message message);
     }
 }

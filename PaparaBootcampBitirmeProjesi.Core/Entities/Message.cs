@@ -9,6 +9,10 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Message : IBaseEntity
     {
+        public Message()
+        {
+            Users = new List<User>();
+        }
         public string MessageId { get; set; }
         public string SenderMail { get; set; }
         public string RecevierMail { get; set; }

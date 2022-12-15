@@ -26,6 +26,11 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
             dbContext.SaveChanges();
         }
 
+        public Message FindMessageById(string id)
+        {
+            return table.Where(x => x.MessageId == id && x.Status == Status.Active).FirstOrDefault();
+        }
+
         public List<Message> GetListInbox(string mail)
         {
             return table.Where(x => x.Status == Status.Active && x.RecevierMail == mail).ToList();
@@ -36,10 +41,5 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
             return table.Where(x => x.Status == Status.Active && x.SenderMail == mail).ToList();
         }
 
-        public void UpdateMessage(Message message)
-        {
-            dbContext.Entry<Message>(message).State = EntityState.Modified;
-            dbContext.SaveChanges();
-        }
     }
 }

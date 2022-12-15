@@ -40,6 +40,5 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         {
             return await table.Where(x => x.Status == Status.Active).ToListAsync();
         }
-
     }
 }

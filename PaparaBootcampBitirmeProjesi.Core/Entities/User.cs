@@ -13,8 +13,8 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
     {
         public User()
         {
-            Vehicles = new();
-            Messages = new();
+            Vehicles = new List<Vehicle>();
+            Messages = new List<Message>();
         }
         public string FirstName { get; set; }
         public string SecondName { get; set; }

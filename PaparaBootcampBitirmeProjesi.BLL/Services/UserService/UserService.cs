@@ -57,6 +57,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                     throw new Exception("Daire dolu! Lütfen boş daire seçimi yapınız.");
                 }
                 IdentityResult result = await userManager.CreateAsync(user, password);
+                await userManager.AddToRoleAsync(user, "user");
                 if (result.Succeeded)
                     emailSender.SendEmail(user.Email, "Şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\n Şifre : {password}"); //Email sender ile kullanıcıya şifreyi mail at
             }
@@ -191,11 +192,5 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             //}
         }
 
-
     }
-    //public class UpdateResponse
-    //{
-    //    public string ErrorMessa { get; set; }
-    //    public User User { get; set; }
-    //}
 }

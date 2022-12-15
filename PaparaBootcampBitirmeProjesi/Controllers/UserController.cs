@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UserController : Controller
     {
         private readonly IUserService userService;

@@ -1,12 +1,87 @@
-﻿using System;
+﻿using AutoMapper;
+using FluentValidation.Results;
+using PaparaBootcampBitirmeProjesi.BLL.Models.MessageDTO;
+using PaparaBootcampBitirmeProjesi.Core.Entities;
+using PaparaBootcampBitirmeProjesi.BLL.Validators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PaparaBootcampBitirmeProjesi.BLL.Validators.MessageValidator;
+using PaparaBootcampBitirmeProjesi.Core.IRepositories;
+using PaparaBootcampBitirmeProjesi.Core.Enums;
 
 namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
 {
-    public class MessageService
+    public class MessageService : IMessageService
     {
+        private readonly IMessageService messageService;
+        private readonly IMessageRepository messageRepository;
+        private readonly IMapper mapper;
+
+        public MessageService(IMessageService messageService, IMapper mapper, IMessageRepository messageRepository)
+        {
+            this.messageService = messageService;
+            this.mapper = mapper;
+        }
+
+
+        public void CreateMessage(CreateMessageDTO createMessage)
+        {
+            CreateMessageDTOValidator validations = new CreateMessageDTOValidator();
+            ValidationResult valResult = validations.Validate(createMessage);
+            if (valResult.IsValid)
+            {
+                Message message = new Message();
+                mapper.Map(createMessage, message);
+                messageRepository.Create(message);
+            }          
+        }
+
+        public void DeleteMessage(string id)
+        {
+            Message message = messageRepository.FindMessageById(id);
+            if(message == null)
+                throw new ArgumentException("Id not found");
+            messageRepository.DeleteMessage(message);
+        }
+
+        public List<GetInboxMessagesDTO> GetListInbox(string mail)
+        {
+            List<Message> messages = new List<Message>();
+            List<GetInboxMessagesDTO> inboxMessagesDTO = new List<GetInboxMessagesDTO>();
+            messages = messageRepository.GetListInbox(mail);
+
+            mapper.Map(messages, inboxMessagesDTO);
+
+            return inboxMessagesDTO;
+        }
+
+        public List<GetSendboxMessagesDTO> GetListSendbox(string mail)
+        {
+            List<Message> messages = new List<Message>();
+            List<GetSendboxMessagesDTO> sendboxMessagesDTO = new List<GetSendboxMessagesDTO>();
+            messages = messageRepository.GetListSendbox(mail);
+
+            mapper.Map(messages, sendboxMessagesDTO);
+
+            return sendboxMessagesDTO;
+        }
+
+        public GetMessageDetailDTO GetMessageDetails(string id)
+        {
+            GetMessageDetailDTO getMessageDetail = new GetMessageDetailDTO();
+            var message = messageRepository.FindMessageById(id);
+            if (message != null)
+            {
+                if (message.Status == Status.Active)
+                    getMessageDetail = mapper.Map<GetMessageDetailDTO>(message);
+                return getMessageDetail;
+            }
+            else
+                throw new Exception("User not found");
+        }
+
     }
 }

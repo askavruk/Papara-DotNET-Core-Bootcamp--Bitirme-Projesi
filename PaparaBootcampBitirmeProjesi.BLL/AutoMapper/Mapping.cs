@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PaparaBootcampBitirmeProjesi.BLL.Models;
+using PaparaBootcampBitirmeProjesi.BLL.Models.MessageDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
 using System;
@@ -17,6 +18,11 @@ namespace PaparaBootcampBitirmeProjesi.BLL.AutoMapper
             CreateMap<CreateUserDTO, User>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
             CreateMap<User, UpdateUserDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
             CreateMap<User, GetUsersWithApartmentDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
+
+            CreateMap<CreateMessageDTO, Message>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
+            CreateMap<Message, GetMessageDetailDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
+            CreateMap<Message, GetInboxMessagesDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
+            CreateMap<Message, GetSendboxMessagesDTO>().ReverseMap().ForAllMembers(x => x.UseDestinationValue());
         }
     }
 }

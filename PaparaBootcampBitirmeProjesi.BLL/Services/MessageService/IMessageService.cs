@@ -1,4 +1,5 @@
-﻿using PaparaBootcampBitirmeProjesi.Core.Entities;
+﻿using PaparaBootcampBitirmeProjesi.BLL.Models.MessageDTO;
+using PaparaBootcampBitirmeProjesi.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
 {
     public interface IMessageService
     {
-        List<Message> GetListInbox();
-        List<Message> GetListSendbox();
+        List<GetInboxMessagesDTO> GetListInbox(string mail);
+        List<GetSendboxMessagesDTO> GetListSendbox(string mail);
 
-        void AddMessage(Message message);
+        GetMessageDetailDTO GetMessageDetails(string id);
 
-        void DeleteMessage(Message message);
+        void CreateMessage(CreateMessageDTO createMessage);
 
-        void UpdateMessage(Message message);
+        void DeleteMessage(string id);
     }
 }
