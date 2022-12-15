@@ -16,13 +16,12 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
 {
     public class MessageService : IMessageService
     {
-        private readonly IMessageService messageService;
         private readonly IMessageRepository messageRepository;
         private readonly IMapper mapper;
 
-        public MessageService(IMessageService messageService, IMapper mapper, IMessageRepository messageRepository)
+        public MessageService(IMapper mapper, IMessageRepository messageRepository)
         {
-            this.messageService = messageService;
+            this.messageRepository = messageRepository;
             this.mapper = mapper;
         }
 
@@ -33,7 +32,10 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             ValidationResult valResult = validations.Validate(createMessage);
             if (valResult.IsValid)
             {
-                Message message = new Message();
+                Message message = new Message()
+                {
+                    SenderMail = 
+                };
                 mapper.Map(createMessage, message);
                 messageRepository.Create(message);
             }          

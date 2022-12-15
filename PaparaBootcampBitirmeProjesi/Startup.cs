@@ -87,6 +87,8 @@ namespace PaparaBootcampBitirmeProjesi
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
