@@ -11,7 +11,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
     public interface IMessageService
     {
         List<GetInboxMessagesDTO> GetListInbox(string mail);
-        List<GetSendboxMessagesDTO> GetListSendbox(string mail);
+        List<GetSendboxMessagesDTO> GetListSendbox(string id);
 
         GetMessageDetailDTO GetMessageDetails(string id);
 

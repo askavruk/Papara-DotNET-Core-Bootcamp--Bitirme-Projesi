@@ -10,7 +10,7 @@ using PaparaBootcampBitirmeProjesi.DAL.Context;
 namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221211211602_init")]
+    [Migration("20221216122140_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,21 +20,6 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("MessageUser", b =>
-                {
-                    b.Property<string>("MessagesMessageId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("MessagesMessageId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("MessageUser");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -66,14 +51,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         new
                         {
                             Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0",
-                            ConcurrencyStamp = "e8814ad4-df20-45a0-9cc0-c32843ba8eb1",
+                            ConcurrencyStamp = "be82c6b4-3630-4aee-a01e-0b454ace1dd0",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c576bb2a-f6b7-46b1-8404-7bd7f5c5f48f",
-                            ConcurrencyStamp = "43952c86-c1d7-4e9c-b658-d03c29be0b17",
+                            Id = "49566474-f16f-4379-b56f-1ae46d859945",
+                            ConcurrencyStamp = "e35f4886-c31c-42cb-b3e5-f27faba4e7bf",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -198,9 +183,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<int>("ApartmentNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("Block")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Block")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -220,9 +204,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -243,6 +226,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MessageContent")
                         .HasColumnType("nvarchar(max)");
 
@@ -261,7 +247,12 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("MessageId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Messages");
                 });
@@ -363,8 +354,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         {
                             Id = "9a0d3776-5392-456c-8f81-42a1811d5129",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a092ae2-d708-48aa-a749-5903997da465",
-                            CreationDate = new DateTime(2022, 12, 12, 0, 16, 1, 405, DateTimeKind.Local).AddTicks(9824),
+                            ConcurrencyStamp = "69d6c9eb-669f-4af5-bcaa-aef0e92bf128",
+                            CreationDate = new DateTime(2022, 12, 16, 15, 21, 39, 568, DateTimeKind.Local).AddTicks(8208),
                             Email = "asenadeneme@hotmail.com",
                             EmailConfirmed = false,
                             FirstName = "Asena",
@@ -376,7 +367,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sevnur",
-                            SecurityStamp = "c17ccf50-4628-42e4-90f0-29dea93cc167",
+                            SecurityStamp = "64235fb1-a4fc-41d1-ac24-d0f32d2769f4",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin"
@@ -409,29 +400,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("VehicleId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Vehicles");
-                });
-
-            modelBuilder.Entity("MessageUser", b =>
-                {
-                    b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.Message", null)
-                        .WithMany()
-                        .HasForeignKey("MessagesMessageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -496,11 +467,22 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Message", b =>
+                {
+                    b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", "User")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("PaparaBootcampBitirmeProjesi.Core.Entities.Vehicle", b =>
                 {
                     b.HasOne("PaparaBootcampBitirmeProjesi.Core.Entities.User", "User")
-                        .WithMany("Vehicles")
-                        .HasForeignKey("UserId");
+                        .WithOne("Vehicle")
+                        .HasForeignKey("PaparaBootcampBitirmeProjesi.Core.Entities.Vehicle", "VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -509,7 +491,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 {
                     b.Navigation("Apartment");
 
-                    b.Navigation("Vehicles");
+                    b.Navigation("Messages");
+
+                    b.Navigation("Vehicle");
                 });
 #pragma warning restore 612, 618
         }

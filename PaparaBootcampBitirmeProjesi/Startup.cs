@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using PaparaBootcampBitirmeProjesi.BLL.AutoMapper;
 using PaparaBootcampBitirmeProjesi.BLL.EmailSender;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
+using PaparaBootcampBitirmeProjesi.BLL.Services.MessageService;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
 using PaparaBootcampBitirmeProjesi.Core.IRepositories;
 using PaparaBootcampBitirmeProjesi.DAL.Context;
@@ -53,9 +54,11 @@ namespace PaparaBootcampBitirmeProjesi
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IApartmentRepository, ApartmentRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
 
             //services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMessageService, MessageService>();
 
             //Mapper
             services.AddAutoMapper(typeof(Mapping));
@@ -87,7 +90,7 @@ namespace PaparaBootcampBitirmeProjesi
 
             app.UseAuthorization();
 
-            app.UseSession();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

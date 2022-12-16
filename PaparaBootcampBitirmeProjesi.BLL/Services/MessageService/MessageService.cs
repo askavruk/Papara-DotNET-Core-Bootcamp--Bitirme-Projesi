@@ -17,12 +17,14 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
     public class MessageService : IMessageService
     {
         private readonly IMessageRepository messageRepository;
+        private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
 
-        public MessageService(IMapper mapper, IMessageRepository messageRepository)
+        public MessageService(IMapper mapper, IMessageRepository messageRepository, IUserRepository userRepository)
         {
             this.messageRepository = messageRepository;
             this.mapper = mapper;
+            this.userRepository = userRepository;
         }
 
         public async Task CreateMessage(CreateMessageDTO createMessage)
@@ -31,16 +33,20 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             ValidationResult valResult = validations.Validate(createMessage);
             if (valResult.IsValid)
             {
-                Message message = new Message();
+                var user = userRepository.FindUserById(createMessage.UserId);
+                Message message = new Message()
+                {
+                    User = user
+                };
                 mapper.Map(createMessage, message);
                 await messageRepository.Create(message);
-            }          
+            }
         }
 
         public void DeleteMessage(string id)
         {
             Message message = messageRepository.FindMessageById(id);
-            if(message == null)
+            if (message == null)
                 throw new ArgumentException("Id not found");
             messageRepository.DeleteMessage(message);
         }
@@ -56,11 +62,11 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             return inboxMessagesDTO;
         }
 
-        public List<GetSendboxMessagesDTO> GetListSendbox(string mail)
+        public List<GetSendboxMessagesDTO> GetListSendbox(string id)
         {
             List<Message> messages = new List<Message>();
             List<GetSendboxMessagesDTO> sendboxMessagesDTO = new List<GetSendboxMessagesDTO>();
-            messages = messageRepository.GetListSendbox(mail);
+            messages = messageRepository.GetListSendbox(id);
 
             mapper.Map(messages, sendboxMessagesDTO);
 
@@ -73,8 +79,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             var message = messageRepository.FindMessageById(id);
             if (message != null)
             {
-                if (message.Status == Status.Active)
-                    getMessageDetail = mapper.Map<GetMessageDetailDTO>(message);
+                getMessageDetail = mapper.Map<GetMessageDetailDTO>(message);
                 return getMessageDetail;
             }
             else

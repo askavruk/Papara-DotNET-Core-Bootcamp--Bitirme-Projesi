@@ -26,17 +26,17 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 
         public List<User> GetAllOnTheABlock()
         {
-            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.A).Include(x => x.Apartment).ToList();
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.A).Include(x => x.Apartment).Include(x => x.Vehicle).ToList();
         }
 
         public List<User> GetAllOnTheBBlock()
         {
-            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.B).Include(x => x.Apartment).ToList();
+            return table.Where(x => x.Status == Status.Active && x.Apartment.Block == Block.B).Include(x => x.Apartment).Include(x => x.Vehicle).ToList();
         }
 
         public List<User> GetAllWithApartment()
         {
-            return dbContext.Users.Where(x => x.Status == Status.Active).Include(a => a.Apartment).Include(a => a.Vehicles).ToList();
+            return dbContext.Users.Where(x => x.Status == Status.Active).Include(a => a.Apartment).Include(a => a.Vehicle).ToList();
         }
     }
 }

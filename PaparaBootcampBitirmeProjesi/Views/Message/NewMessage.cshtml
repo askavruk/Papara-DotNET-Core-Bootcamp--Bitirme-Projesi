@@ -3,24 +3,27 @@
 @model CreateMessageDTO
 
 <h1>Yeni Mesaj</h1>
-
-<form method="post" asp-action="CreateMessage">
+<div class="text-danger" asp-validation-summary="All"></div>
+<form method="post" asp-action="NewMessage">
     <div class="card-body">
         <div class="form-group">
             <label asp-for="RecevierMail">Alıcı</label>
             <input asp-for="RecevierMail" type="text" class="form-control" placeholder="Alıcı">
+            <span asp-validation-for="RecevierMail" style="color:red;"></span><br />
         </div>
         <div class="form-group">
             <label asp-for="Subject" class="control-label">Konu</label>
             <input asp-for="Subject" type="text" class="form-control" placeholder="Konu" />
+            <span asp-validation-for="Subject" style="color:red;"></span><br />
         </div>
         <div class="form-group">
-            <label asp-for="MessageContent" class="control-label">Soyisim</label>
+            <label asp-for="MessageContent" class="control-label">Mesaj içeriği</label>
             <textarea asp-for="MessageContent" type="text" class="form-control"></textarea>
+            <span asp-validation-for="MessageContent" style="color:red;"></span><br />
         </div>
         <br />
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Ekle</button>
+            <button type="submit" class="btn btn-primary">Gönder</button>
         </div>
     </div>
 </form>

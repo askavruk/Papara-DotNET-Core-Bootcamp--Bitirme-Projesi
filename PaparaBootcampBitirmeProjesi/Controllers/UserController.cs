@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class UserController : Controller
     {
         private readonly IUserService userService;
@@ -26,32 +26,20 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 
         public IActionResult BlockAList()
         {
-            if (ModelState.IsValid)
-            {
                 var blokAUsers = userService.GetAllUsersOnTheABlock();
                 return View(blokAUsers);
-            }
-            return RedirectToAction("Index");
         }
 
         public IActionResult BlockBList()
         {
-            if (ModelState.IsValid)
-            {
                 var blokBUsers = userService.GetAllUsersOnTheBBlock();
                 return View(blokBUsers); 
-            }
-            return RedirectToAction("Index");
         }
 
         public IActionResult AllUsers()
         {
-            if (ModelState.IsValid)
-            {
                 var allOfThem = userService.GetAllUsers();
                 return View(allOfThem); 
-            }
-            return RedirectToAction("Index");
         }
 
         public IActionResult CreateUser()
@@ -65,19 +53,15 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             if (ModelState.IsValid)
             {
                 await userService.CreateUser(createUserDTO);
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Index");
             }
-            return View();
+            return View(createUserDTO);
         }
 
         public IActionResult UpdateOrDeleteUser()
         {
-            if (ModelState.IsValid)
-            {
                 var allOfThem = userService.GetAllUsers();
                 return View(allOfThem); 
-            }
-            return View();
         }
 
 
@@ -104,12 +88,8 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 
         public async Task<IActionResult> DeleteUser(string id)
         {
-            if (ModelState.IsValid)
-            {
                 await userService.DeleteUser(id);
                 return RedirectToAction("UpdateOrDeleteUser"); 
-            }
-            return View();
         }
 
 

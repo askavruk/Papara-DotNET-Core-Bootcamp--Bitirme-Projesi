@@ -16,6 +16,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public Apartment Apartment { get; set; }
-        public List<Vehicle> Vehicles { get; set; }
+        public Vehicle Vehicle { get; set; }
     }
 }

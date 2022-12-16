@@ -52,7 +52,12 @@
                             <td>@item.FirstName @item.SecondName @item.LastName</td>
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
-                            <td>@item.Vehicles</td>
+                            <td>
+                                @if (item.Vehicle != null)
+                                {
+                                    @item.Vehicle.Brand  @item.Vehicle.Model @item.Vehicle.LicensePlate
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>

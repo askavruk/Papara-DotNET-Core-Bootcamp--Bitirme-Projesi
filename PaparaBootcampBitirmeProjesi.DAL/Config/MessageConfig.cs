@@ -12,6 +12,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
     {
         public override void Configure(EntityTypeBuilder<Message> builder)
         {
+
             builder.Property(x => x.MessageContent).IsRequired();
             builder.Property(x => x.SenderMail).IsRequired();
             builder.Property(x => x.RecevierMail).IsRequired();

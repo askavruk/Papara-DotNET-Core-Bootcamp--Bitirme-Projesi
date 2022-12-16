@@ -51,7 +51,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 };
                 mapper.Map(createUserDTO, user);
                 string password = Guid.NewGuid().ToString();
-                //await userRepository.Create(user);
 
                 var apartment = apartmentRepository.ApartmentIsFull(user.Apartment);
 
@@ -64,7 +63,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
                 if (result.Succeeded)
                     emailSender.SendEmail(user.Email, "Şifre", $"Lütfen şifrenizi başka biri ile paylaşmayın...\n Şifre : {password}"); //Email sender ile kullanıcıya şifreyi mail at
             }
-
             else
             {
                 response.ValidationMessages = valResult.Errors.GetValidationErrorMessage();
@@ -169,13 +167,13 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             if (result.IsValid)
             {
                 User user = await userManager.FindByEmailAsync(isLogin.Email);
-                    bool check = await userManager.CheckPasswordAsync(user, isLogin.Password);
-                    if (check)
-                    {
-                        await signInManager.PasswordSignInAsync(user, isLogin.Password, false, false);
-                        return user;
-                    }
-                    return "Yanlış şifre ya da e-mail! Lütfen şifrenizi ya da e-mail adresinizi kontrol edin.";
+                bool check = await userManager.CheckPasswordAsync(user, isLogin.Password);
+                if (check)
+                {
+                    await signInManager.PasswordSignInAsync(user, isLogin.Password, false, false);
+                    return user;
+                }
+                return "Yanlış şifre ya da e-mail! Lütfen şifrenizi ya da e-mail adresinizi kontrol edin.";
             }
             else
             {

@@ -14,7 +14,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Models.MessageDTO
         public string Subject { get; set; }
         public string MessageContent { get; set; }
         public DateTime CreationDate { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; }
 
     }
 }

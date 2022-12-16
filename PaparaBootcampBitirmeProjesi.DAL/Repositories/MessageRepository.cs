@@ -28,17 +28,17 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
 
         public Message FindMessageById(string id)
         {
-            return table.Where(x => x.MessageId == id && x.Status == Status.Active).FirstOrDefault();
+            return table.FirstOrDefault(x => x.MessageId == id && x.Status == Status.Active);
         }
 
         public List<Message> GetListInbox(string mail)
         {
-            return table.Where(x => x.Status == Status.Active && x.RecevierMail == mail).ToList();
+            return table.Where(x => x.Status == Status.Active && x.RecevierMail==mail).ToList();
         }
 
-        public List<Message> GetListSendbox(string mail)
+        public List<Message> GetListSendbox(string id)
         {
-            return table.Where(x => x.Status == Status.Active && x.SenderMail == mail).ToList();
+            return table.Where(x => x.Status == Status.Active && x.User.Id == id).ToList();
         }
 
     }

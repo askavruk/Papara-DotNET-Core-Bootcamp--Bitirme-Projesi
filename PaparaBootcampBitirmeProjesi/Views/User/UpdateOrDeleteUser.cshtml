@@ -53,7 +53,12 @@
                             <td>@item.FirstName @item.SecondName @item.LastName</td>
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
-                            <td>@item.Vehicles</td>
+                            <td>
+                                @if (item.Vehicle != null)
+                                {
+                                    @item.Vehicle.Brand  @item.Vehicle.Model @item.Vehicle.LicensePlate
+                                }
+                            </td>
                             <td><a asp-action="UpdateUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary">Düzenle</a></td>
                             <td><a asp-action="DeleteUser" asp-controller="User" asp-route-id="@item.Id" type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini silmek istediğinize emin misiniz?')">Sil</a></td>
                         </tr>

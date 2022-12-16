@@ -52,10 +52,10 @@
                             <td>@item.FirstName @item.SecondName @item.LastName</td>
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
-                              <td>
-                                @if (item.Vehicles != null)
+                            <td>
+                                @if (item.Vehicle != null)
                                 {
-                                    @item.Vehicles
+                                    @item.Vehicle.Brand  @item.Vehicle.Model @item.Vehicle.LicensePlate
                                 }
                             </td>
                         </tr>

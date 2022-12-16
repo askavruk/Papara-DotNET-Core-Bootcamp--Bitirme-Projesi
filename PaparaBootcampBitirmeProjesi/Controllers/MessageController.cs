@@ -22,14 +22,14 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         {
             User user = await userManager.GetUserAsync(HttpContext.User);
             string mail = user.Email;
-            messageService.GetListInbox(mail);
-            return View();
+            var inbox = messageService.GetListInbox(mail);
+            return View(inbox);
         }
 
         public IActionResult GetMessageDetails(string id)
         {
-            messageService.GetMessageDetails(id);
-            return View();
+            var messageDetail = messageService.GetMessageDetails(id);
+            return View(messageDetail);
         }
 
         public IActionResult NewMessage()
@@ -41,7 +41,8 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         public async Task<IActionResult> NewMessage(CreateMessageDTO createMessage)
         {
             User user = await userManager.GetUserAsync(HttpContext.User);
-            createMessage.User.Id = user.Id;
+            createMessage.UserId = user.Id;
+            createMessage.SenderMail = user.Email;
             await messageService.CreateMessage(createMessage);
             return RedirectToAction("Sendbox");
         }
@@ -49,15 +50,14 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         public async Task<IActionResult> Sendbox()
         {
             User user = await userManager.GetUserAsync(HttpContext.User);
-            string mail = user.Email;
-            messageService.GetListSendbox(mail);
-            return View();
+            string id = user.Id;
+            var sendBox = messageService.GetListSendbox(id);
+            return View(sendBox);
         }
 
-        [HttpDelete]
+
         public IActionResult DeleteMessage(string id)
         {
-
             messageService.DeleteMessage(id);
             return RedirectToAction("Inbox");
         }

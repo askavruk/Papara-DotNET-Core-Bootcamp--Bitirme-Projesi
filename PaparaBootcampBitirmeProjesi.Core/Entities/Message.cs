@@ -9,7 +9,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
 {
     public class Message : IBaseEntity
     {
-        public string MessageId { get; set; }
+        public string MessageId { get; set; } = Guid.NewGuid().ToString();
         public string SenderMail { get; set; }
         public string RecevierMail{ get; set; }
         public string Subject { get; set; }
@@ -23,6 +23,6 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public Status Status { get; set; } = Status.Active;
 
         //Relations
-        public User Users { get; set; }
+        public User User { get; set; }
     }
 }

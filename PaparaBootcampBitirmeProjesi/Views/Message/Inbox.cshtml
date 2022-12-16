@@ -13,19 +13,32 @@
         <th>Gönderen</th>
         <th>Konu</th>
         <th>Tarih</th>
-        <th>Sil</th>
         <th>Mesajı Aç</th>
+        <th>Sil</th>
+        <th>Mesaj Durumu</th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <th>@count</th>
-            <th>@item.SenderMail</th>
-            <th>@item.Subject</th>
-            <th>@item.CreationDate</th>
-            <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini silmek istediğinize emin misiniz?')">Sil</a></th>
-            <th>Mesajı Aç</th>
-        </tr>
+        count++;
+                <tr>
+                    <th>@count</th>
+                    <th>
+                @if (item.SenderMail != null)
+                {
+                    @item.SenderMail
+                }
+                    </th>
+                    <th>
+                @if (item.Subject != null)
+                {
+                    @item.Subject
+                }
+                        </th>
+                    <th> @item.CreationDate </th>
+                    <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
+                    <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
+                    <th> Mesaj Durumu </th>
+                </tr>
     }
 </table>
 
