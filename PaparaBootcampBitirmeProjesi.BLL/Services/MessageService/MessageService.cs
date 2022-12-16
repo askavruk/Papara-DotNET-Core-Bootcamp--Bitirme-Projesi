@@ -77,13 +77,15 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
         {
             GetMessageDetailDTO getMessageDetail = new GetMessageDetailDTO();
             var message = messageRepository.FindMessageById(id);
+            message.IsRead = true;
+            getMessageDetail.IsRead = message.IsRead;
             if (message != null)
             {
                 getMessageDetail = mapper.Map<GetMessageDetailDTO>(message);
                 return getMessageDetail;
             }
             else
-                throw new Exception("User not found");
+                throw new Exception("Kullanıcı bulunamadı");
         }
 
     }

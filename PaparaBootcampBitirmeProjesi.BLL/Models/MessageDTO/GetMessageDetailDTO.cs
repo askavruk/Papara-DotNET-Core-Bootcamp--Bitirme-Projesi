@@ -13,6 +13,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Models.MessageDTO
         public string RecevierMail { get; set; }
         public string Subject { get; set; }
         public string MessageContent { get; set; }
+        public bool IsRead { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

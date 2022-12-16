@@ -37,7 +37,7 @@
                     <th> @item.CreationDate </th>
                     <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
                     <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
-                    <th> Mesaj Durumu </th>
+                    <th>@item.IsRead </th>
                 </tr>
     }
 </table>
