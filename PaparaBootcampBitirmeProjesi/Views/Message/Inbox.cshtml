@@ -20,25 +20,31 @@
     @foreach (var item in Model)
     {
         count++;
-                <tr>
-                    <th>@count</th>
-                    <th>
+                            <tr id= "color">
+                                <th>@count</th>
+                                <th>
                 @if (item.RecevierMail != null)
                 {
                     @item.RecevierMail
                 }
-                    </th>
-                    <th>
+                                </th>
+                                <th>
                 @if (item.Subject != null)
                 {
                     @item.Subject
                 }
-                        </th>
-                    <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
-                    <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
-                    <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
-                    <th>@item.IsRead </th>
-                </tr>
+                                    </th>
+                                <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
+                                <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" id ="change" onclick="changeColor()">Mesajı Aç</a></th>
+                                <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
+                                <th>@item.IsRead </th>
+                            </tr>
     }
 </table>
+
+<script>
+         function changeColor() {
+         document.getElementById("color").style.background = "gray";}
+</script>
+
 
