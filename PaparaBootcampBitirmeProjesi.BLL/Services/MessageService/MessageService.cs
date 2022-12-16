@@ -36,7 +36,9 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
                 var user = userRepository.FindUserById(createMessage.UserId);
                 Message message = new Message()
                 {
-                    User = user
+                    User = user,
+                    CreationDate = DateTime.Now,
+                    RecevierMail = "asenadeneme@hotmail.com"
                 };
                 mapper.Map(createMessage, message);
                 await messageRepository.Create(message);
@@ -47,7 +49,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
         {
             Message message = messageRepository.FindMessageById(id);
             if (message == null)
-                throw new ArgumentException("Id not found");
+                throw new ArgumentException("Messaj id bulunamadı");
             messageRepository.DeleteMessage(message);
         }
 
@@ -77,16 +79,14 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
         {
             GetMessageDetailDTO getMessageDetail = new GetMessageDetailDTO();
             var message = messageRepository.FindMessageById(id);
-            message.IsRead = true;
-            getMessageDetail.IsRead = message.IsRead;
             if (message != null)
             {
-                getMessageDetail = mapper.Map<GetMessageDetailDTO>(message);
-                return getMessageDetail;
+                messageRepository.UpdateMessage(message);
+                mapper.Map(message, getMessageDetail);
+                return mapper.Map(message, getMessageDetail);
             }
             else
-                throw new Exception("Kullanıcı bulunamadı");
+                throw new Exception("Mesaj bulunamadı");
         }
-
     }
 }

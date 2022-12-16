@@ -47,7 +47,8 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.AdminService
             {
                 User user = new User()
                 {
-                    UserName = createUserDTO.FirstName + createUserDTO.LastName
+                    UserName = createUserDTO.FirstName + createUserDTO.LastName,
+                    CreationDate = DateTime.Now
                 };
                 mapper.Map(createUserDTO, user);
                 string password = Guid.NewGuid().ToString();

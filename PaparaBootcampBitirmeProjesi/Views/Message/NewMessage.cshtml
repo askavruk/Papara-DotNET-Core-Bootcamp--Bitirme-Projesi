@@ -6,11 +6,11 @@
 <div class="text-danger" asp-validation-summary="All"></div>
 <form method="post" asp-action="NewMessage">
     <div class="card-body">
-        <div class="form-group">
+  @*      <div class="form-group">
             <label asp-for="RecevierMail">Alıcı</label>
             <input asp-for="RecevierMail" type="text" class="form-control" placeholder="Alıcı">
             <span asp-validation-for="RecevierMail" style="color:red;"></span><br />
-        </div>
+        </div>*@
         <div class="form-group">
             <label asp-for="Subject" class="control-label">Konu</label>
             <input asp-for="Subject" type="text" class="form-control" placeholder="Konu" />

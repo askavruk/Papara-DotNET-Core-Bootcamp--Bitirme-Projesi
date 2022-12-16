@@ -11,7 +11,7 @@
 <table class="table table-bordered"
     <tr>
         <th>#</th>
-        <th>Gönderilen</th>
+        @*<th>Gönderilen</th>*@
         <th>Konu</th>
         <th>Tarih</th>
         <th>Mesajı Aç</th>
@@ -22,21 +22,21 @@
         count++;
         <tr>
                                 <th>@count</th>
-                                <th>
+                                @*<th>
                     @if (item.RecevierMail != null)
                     {
                         @item.RecevierMail
                     }
-                                </th>
+                                </th>*@
                                 <th>
                     @if (item.Subject != null)
                     {
                         @item.Subject
                     }
                                     </th>
-                                <th> @item.CreationDate </th>
+                                <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
                                 <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
-                                <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini silmek istediğinize emin misiniz?')">Sil</a></th>
+                                <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm("Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
                             </tr>
         }
 

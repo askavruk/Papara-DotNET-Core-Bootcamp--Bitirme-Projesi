@@ -3,24 +3,23 @@
 @model GetMessageDetailDTO
 
 <h1>Mesaj Detayı</h1>
-<div class="text-danger" asp-validation-summary="All"></div>
-<form method="post" asp-action="NewMessage">
+<form method="post" asp-action="GetMessageDetails">
     <div class="card-body">
         <div class="form-group">
             <label asp-for="RecevierMail">Alıcı</label>
             <input asp-for="RecevierMail" type="text" class="form-control" placeholder="Alıcı" readonly />
-            <span asp-validation-for="RecevierMail" style="color:red;"></span><br />
         </div>
         <div class="form-group">
             <label asp-for="Subject" class="control-label">Konu</label>
             <input asp-for="Subject" type="text" class="form-control" placeholder="Konu" readonly />
-            <span asp-validation-for="Subject" style="color:red;"></span><br />
         </div>
         <div class="form-group">
             <label asp-for="MessageContent" class="control-label">Mesaj içeriği</label>
             <textarea asp-for="MessageContent" type="text" class="form-control" readonly></textarea>
-            <span asp-validation-for="MessageContent" style="color:red;"></span><br />
         </div>
         <br />
+    </div>
+    <div class="card-footer">
+        <button asp-action="Inbox" asp-controller="Message" type="submit" class="btn btn-primary">Geri Dön</button>
     </div>
 </form>

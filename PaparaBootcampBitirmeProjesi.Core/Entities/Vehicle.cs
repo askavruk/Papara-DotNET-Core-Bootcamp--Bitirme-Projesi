@@ -12,7 +12,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public string VehicleId { get; set; } = Guid.NewGuid().ToString();
         public string Brand { get; set; }
         public string Model { get; set; }
-        public string? LicensePlate { get; set; }
+        public string LicensePlate { get; set; }
 
         //IBaseEntity Implementation
         public DateTime CreationDate { get; set; }

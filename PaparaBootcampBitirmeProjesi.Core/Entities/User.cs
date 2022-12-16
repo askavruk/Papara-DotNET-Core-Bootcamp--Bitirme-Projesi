@@ -16,7 +16,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
             Messages = new List<Message>();
         }
         public string FirstName { get; set; }
-        public string? SecondName { get; set; }
+        public string SecondName { get; set; }
         public string LastName { get; set; }
         public string IdentityNumber { get; set; }
 

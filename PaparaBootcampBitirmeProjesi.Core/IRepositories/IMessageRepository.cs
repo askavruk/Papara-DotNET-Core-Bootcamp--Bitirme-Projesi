@@ -15,5 +15,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.IRepositories
         public Message FindMessageById(string id);
 
         void DeleteMessage(Message message);
+
+        Message UpdateMessage(Message message);
     }
 }

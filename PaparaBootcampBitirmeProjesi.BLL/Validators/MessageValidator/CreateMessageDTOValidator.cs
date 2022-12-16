@@ -12,7 +12,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Validators.MessageValidator
     {
         public CreateMessageDTOValidator()
         {
-            RuleFor(a => a.RecevierMail).EmailAddress().NotEmpty().NotNull().WithMessage("Alıcı maili boş bırakılamaz!");
+           // RuleFor(a => a.RecevierMail).EmailAddress().NotEmpty().NotNull().WithMessage("Alıcı maili boş bırakılamaz!");
             RuleFor(a => a.MessageContent).MaximumLength(200).WithMessage("İçeriğiniz en fazla 200 karakterden oluşmalıdır.");
 
 

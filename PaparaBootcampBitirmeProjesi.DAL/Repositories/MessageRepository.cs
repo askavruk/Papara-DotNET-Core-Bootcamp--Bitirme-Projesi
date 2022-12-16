@@ -18,7 +18,6 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         {
             this.dbContext = dbContext;
         }
-
         public void DeleteMessage(Message message)
         {
             message.DeleteDate = DateTime.Now;
@@ -39,6 +38,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         public List<Message> GetListSendbox(string id)
         {
             return table.Where(x => x.Status == Status.Active && x.User.Id == id).ToList();
+        }
+
+        public Message UpdateMessage(Message message)
+        {
+            message.UpdateDate = DateTime.Now;
+            message.IsRead = true;
+            dbContext.SaveChanges();
+            return message;
         }
 
     }

@@ -23,9 +23,9 @@
                 <tr>
                     <th>@count</th>
                     <th>
-                @if (item.SenderMail != null)
+                @if (item.RecevierMail != null)
                 {
-                    @item.SenderMail
+                    @item.RecevierMail
                 }
                     </th>
                     <th>
@@ -34,7 +34,7 @@
                     @item.Subject
                 }
                         </th>
-                    <th> @item.CreationDate </th>
+                    <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
                     <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
                     <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
                     <th>@item.IsRead </th>
