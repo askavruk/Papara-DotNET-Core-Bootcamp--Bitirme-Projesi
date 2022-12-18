@@ -52,9 +52,9 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
-            "FluentValidation": {
+            "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.4.0, )"
+              "version": "[11.2.2, )"
             },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",

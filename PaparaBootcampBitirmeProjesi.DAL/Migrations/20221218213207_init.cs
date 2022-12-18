@@ -26,10 +26,10 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SecondName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdentityNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IdentityNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -42,7 +42,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -196,7 +196,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     RecevierMail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MessageContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsRead = table.Column<bool>(type: "bit", nullable: false),
+                    MessageStatus = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -241,17 +241,17 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8da8ad13-b14a-458b-9b29-b07015c3b3d0", "be82c6b4-3630-4aee-a01e-0b454ace1dd0", "admin", "ADMIN" });
+                values: new object[] { "8da8ad13-b14a-458b-9b29-b07015c3b3d0", "7e197e6d-0225-41c9-b6b2-95f049c983d8", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "49566474-f16f-4379-b56f-1ae46d859945", "e35f4886-c31c-42cb-b3e5-f27faba4e7bf", "user", "USER" });
+                values: new object[] { "91089533-be92-448e-8480-35855e609027", "95b88de9-2c9d-42cd-b0fb-ef2b2c15e8c4", "user", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreationDate", "DeleteDate", "Email", "EmailConfirmed", "FirstName", "IdentityNumber", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "Status", "TwoFactorEnabled", "UpdateDate", "UserName" },
-                values: new object[] { "9a0d3776-5392-456c-8f81-42a1811d5129", 0, "69d6c9eb-669f-4af5-bcaa-aef0e92bf128", new DateTime(2022, 12, 16, 15, 21, 39, 568, DateTimeKind.Local).AddTicks(8208), null, "asenadeneme@hotmail.com", false, "Asena", "12341231257", "Kavruk", true, null, "ASENADENEME@HOTMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==", null, false, "Sevnur", "64235fb1-a4fc-41d1-ac24-d0f32d2769f4", 1, false, null, "admin" });
+                values: new object[] { "9a0d3776-5392-456c-8f81-42a1811d5129", 0, "25d3e36f-59a4-4a1c-b037-5017b829c5b3", new DateTime(2022, 12, 19, 0, 32, 6, 395, DateTimeKind.Local).AddTicks(5626), null, "asenadeneme@hotmail.com", false, "Asena", "12341231257", "Kavruk", true, null, "ASENADENEME@HOTMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==", null, false, "Sevnur", "802351c3-4223-4aaf-a9b6-938130e4e624", 1, false, null, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

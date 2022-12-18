@@ -12,7 +12,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
     {
         public override void Configure(EntityTypeBuilder<Apartment> builder)
         {
-            builder.Property(x=>x.Resident).IsRequired();
+            builder.Property(x => x.Resident).IsRequired();
             builder.Property(x=>x.ApartmentNo).IsRequired();
             builder.Property(x=>x.IsFull).IsRequired();
             builder.Property(x=>x.Type).IsRequired();

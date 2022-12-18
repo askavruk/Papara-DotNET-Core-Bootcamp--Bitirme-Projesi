@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Core.Enums
 {
-    public enum ApartmentType
+    public enum MessageStatus
     {
-        IkiOdaBirSalon,
-        UcOdaBirSalon
+        Okunmadı =1,
+        Okundu,
     }
 }

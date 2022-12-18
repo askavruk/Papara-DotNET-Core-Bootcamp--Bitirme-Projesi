@@ -43,6 +43,8 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
             User user = await userManager.GetUserAsync(HttpContext.User);
             createMessage.UserId = user.Id;
             createMessage.SenderMail = user.Email;
+            createMessage.RecevierMail = "asenadeneem@hotmail.com";
+            createMessage.CreationDate = System.DateTime.Now;
             await messageService.CreateMessage(createMessage);
             return RedirectToAction("Sendbox");
         }

@@ -3,6 +3,7 @@
 }
 
 @using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO
+@using PaparaBootcampBitirmeProjesi.Core.Enums
 
 @model UpdateUserDTO
 <div class="card card-primary">
@@ -11,9 +12,8 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form method="post" asp-action="UpdateUser">
-                <input asp-for="@Model.Id" class="form-control" style="visibility: hidden" readonly/>
-       <div class="card-body">
+        <form method="post" asp-action="UpdateUser">
+        <div class="card-body">
             <div class="form-group">
                 <label asp-for="FirstName">İsim</label>
                 <input asp-for="FirstName" type="text" class="form-control" placeholder="İsim">
@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label asp-for="SecondName" class="control-label">İkinci İsim</label>
                 <input asp-for="SecondName" type="text" class="form-control" placeholder="İkinci İsim" />
-                <span asp-validation-for="SecondName" style="color:red;"></span><br />
+                 <span asp-validation-for="SecondName" style="color:red;"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label">Soyisim</label>
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label">Phone</label>
                 <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Telefon Numarası" />
-                <span asp-validation-for="PhoneNumber" style="color:red;" ></span><br />
+                <span asp-validation-for="PhoneNumber" style="color:red;"></span><br />
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
@@ -40,8 +40,24 @@
                 <span asp-validation-for="Email" style="color:red;"></span><br />
             </div>
             <div class="form-group">
-                <label asp-for="Apartment.Block" class="control-label">Blok</label>
-                <input asp-for="Apartment.Block" type="text" class="form-control" placeholder="Blok" />
+               <label asp-for="Apartment.Resident">Daire Sakini Durumu</label>
+                <select asp-for="Apartment.Resident" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ResidentType>()">
+                    <option>Lütfen daire sakini tipini seçiniz...</option>
+                </select>
+                <span asp-validation-for="Apartment.Resident" style="color:red;"></span><br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Apartment.Type">Daire Tipi</label>
+                <select asp-for="Apartment.Type" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<ApartmentType>()">
+                    <option>Lütfen daire tipini seçiniz...</option>
+                </select>
+                <span asp-validation-for="Apartment.Type" style="color:red;"></span><br />
+            </div>         
+            <div class="form-group">
+                <label asp-for="Apartment.Block">Blok</label>
+                <select asp-for="Apartment.Block" class="custom-select form-control-border" asp-items="Html.GetEnumSelectList<Block>()">
+                    <option>Lütfen bloğu seçiniz...</option>
+                </select>
                 <span asp-validation-for="Apartment.Block" style="color:red;"></span><br />
             </div>
             <div class="form-group">
@@ -55,10 +71,21 @@
                 <span asp-validation-for="Apartment.ApartmentNo" style="color:red;"></span><br />
             </div>
             <div class="form-group">
-                <label asp-for="Apartment.Type" class="control-label">Daire Tipi</label>
-                <input asp-for="Apartment.Type" type="text" class="form-control" placeholder="Daire Tipi" />
-                <span asp-validation-for="Apartment.Type" style="color:red;"></span><br />
+                <label asp-for="Vehicle.Brand" class="control-label">Aracın Markası</label>
+                <input asp-for="Vehicle.Brand" type="text" class="form-control" placeholder="Aracın Markası" />
+                 <span asp-validation-for="Vehicle.Brand" style="color:red;"></span><br />
             </div>
+             <div class="form-group">
+                <label asp-for="Vehicle.Model" class="control-label">Aracın Modeli</label>
+                <input asp-for="Vehicle.Model" type="text" class="form-control" placeholder="Aracın Modeli" />
+                 <span asp-validation-for="Vehicle.Model" style="color:red;"></span><br />
+            </div>
+             <div class="form-group">
+                <label asp-for="Vehicle.LicensePlate" class="control-label">Aracın Plakası</label>
+                <input asp-for="Vehicle.LicensePlate" type="text" class="form-control" placeholder="Aracın Plakası" />
+                 <span asp-validation-for="Vehicle.LicensePlate" style="color:red;"></span><br />
+            </div>          
+
         </div>
         <!-- /.card-body -->
 
@@ -66,4 +93,7 @@
             <button type="submit" class="btn btn-primary" onclick="return confirm('Daire sakinini güncellensin mi?')">Güncelle</button>
         </div>
     </form>
+
+
+
 </div>

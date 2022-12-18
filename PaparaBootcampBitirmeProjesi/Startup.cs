@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PaparaBootcampBitirmeProjesi.BLL.AutoMapper;
 using PaparaBootcampBitirmeProjesi.BLL.EmailSender;
+using PaparaBootcampBitirmeProjesi.BLL.Services.AccountService;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
 using PaparaBootcampBitirmeProjesi.BLL.Services.MessageService;
 using PaparaBootcampBitirmeProjesi.Core.Entities;
@@ -58,6 +59,7 @@ namespace PaparaBootcampBitirmeProjesi
 
             //services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IMessageService, MessageService>();
 
             //Mapper

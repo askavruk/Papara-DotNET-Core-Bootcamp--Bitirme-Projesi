@@ -13,9 +13,9 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Config
         public override void Configure(EntityTypeBuilder<Message> builder)
         {
 
-            builder.Property(x => x.MessageContent).IsRequired();
-            builder.Property(x => x.SenderMail).IsRequired();
-            builder.Property(x => x.RecevierMail).IsRequired();
+            builder.Property(x => x.MessageContent).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.SenderMail).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.RecevierMail).IsRequired().HasMaxLength(50);
 
             base.Configure(builder);
         }

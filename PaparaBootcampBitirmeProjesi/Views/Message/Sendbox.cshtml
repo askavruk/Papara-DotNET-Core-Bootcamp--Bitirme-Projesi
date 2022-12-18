@@ -34,7 +34,7 @@
                         @item.Subject
                     }
                                     </th>
-                                <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
+                                <th> @item.CreationDate.ToShortDateString() </th>
                                 <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary">Mesajı Aç</a></th>
                                 <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm("Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
                             </tr>

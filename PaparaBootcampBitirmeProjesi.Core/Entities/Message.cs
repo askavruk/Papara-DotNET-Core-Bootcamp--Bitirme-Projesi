@@ -14,7 +14,7 @@ namespace PaparaBootcampBitirmeProjesi.Core.Entities
         public string RecevierMail{ get; set; }
         public string Subject { get; set; }
         public string MessageContent { get; set; }
-        public bool IsRead { get; set; }
+        public MessageStatus MessageStatus { get; set; } = MessageStatus.Okunmadı;
 
         //IBaseEntity Implementation
         public DateTime CreationDate { get; set; }

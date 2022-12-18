@@ -37,8 +37,8 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
                 Message message = new Message()
                 {
                     User = user,
-                    CreationDate = DateTime.Now,
-                    RecevierMail = "asenadeneme@hotmail.com"
+                    //CreationDate = DateTime.Now
+                   // RecevierMail = "asenadeneme@hotmail.com"
                 };
                 mapper.Map(createMessage, message);
                 await messageRepository.Create(message);
@@ -49,7 +49,7 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
         {
             Message message = messageRepository.FindMessageById(id);
             if (message == null)
-                throw new ArgumentException("Messaj id bulunamadı");
+                throw new ArgumentException("Mesaj id bulunamadı");
             messageRepository.DeleteMessage(message);
         }
 
@@ -82,7 +82,6 @@ namespace PaparaBootcampBitirmeProjesi.BLL.Services.MessageService
             if (message != null)
             {
                 messageRepository.UpdateMessage(message);
-                mapper.Map(message, getMessageDetail);
                 return mapper.Map(message, getMessageDetail);
             }
             else

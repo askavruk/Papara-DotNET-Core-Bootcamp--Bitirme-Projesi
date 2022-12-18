@@ -43,7 +43,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Repositories
         public Message UpdateMessage(Message message)
         {
             message.UpdateDate = DateTime.Now;
-            message.IsRead = true;
+            message.MessageStatus = MessageStatus.Okundu;
             dbContext.SaveChanges();
             return message;
         }

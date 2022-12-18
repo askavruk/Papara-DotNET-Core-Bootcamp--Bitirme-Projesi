@@ -1,21 +1,19 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using PaparaBootcampBitirmeProjesi.BLL.Models.AccountDTO;
-using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
-using PaparaBootcampBitirmeProjesi.Core.Entities;
+using PaparaBootcampBitirmeProjesi.BLL.Services.AccountService;
 using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
-    [AllowAnonymous]
+
     public class AccountController : Controller
     {
-        private readonly IUserService userService;
+        private readonly IAccountService accountService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IAccountService accountService)
         {
-            this.userService = userService;
+            this.accountService = accountService;
         }
 
         [HttpGet]
@@ -28,12 +26,15 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginDTO isLogin)
         {
-            if (ModelState.IsValid)
+            if (isLogin.Email!=null&& isLogin.Password != null && ModelState.IsValid)
             {
-                var result = await userService.Login(isLogin);
+                await accountService.Login(isLogin);
                 return RedirectToAction("Index", "User");
             }
-             return View("Login");
+            else
+            {
+                return View("Login");
+            }
         }
 
         [HttpGet]
@@ -47,7 +48,7 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await userService.ForgotPassword(forgotPassword);
+                var result = await accountService.ForgotPassword(forgotPassword);
             }
 
             return RedirectToAction("Login");

@@ -20,31 +20,32 @@
     @foreach (var item in Model)
     {
         count++;
-                            <tr id= "color">
-                                <th>@count</th>
-                                <th>
-                @if (item.RecevierMail != null)
+                                    <tr  id= "color">
+                                        <th>@count</th>
+                                        <th>
+                @if (item.SenderMail != null)
                 {
-                    @item.RecevierMail
+                    @item.SenderMail
                 }
-                                </th>
-                                <th>
+                                        </th>
+                                        <th>
                 @if (item.Subject != null)
                 {
                     @item.Subject
                 }
-                                    </th>
-                                <th> @item.CreationDate.ToString("dd.MMMM.yyyy") </th>
-                                <th><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" id ="change" onclick="changeColor()">Mesajı Aç</a></th>
-                                <th><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></th>
-                                <th>@item.IsRead </th>
-                            </tr>
+                                            </th>
+                                        <td> @item.CreationDate.ToShortDateString() </td>
+                                        <td><a asp-action="GetMessageDetails" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" id ="change" onclick="change_color(this)" >Mesajı Aç</a></td>
+                                        <td><a asp-action="DeleteMessage" asp-controller="Message" asp-route-id="@item.MessageId" type="submit" class="btn btn-primary" onclick="return confirm('Mesajı silmek istediğinize emin misiniz?')">Sil</a></td>
+                                        <td>@item.MessageStatus </td>
+                                    </tr>
     }
 </table>
 
 <script>
-         function changeColor() {
-         document.getElementById("color").style.background = "gray";}
+        function fixColor(color) {
+            document.getElementById('color').style.background = color;
+        }
 </script>
 
 

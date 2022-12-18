@@ -49,14 +49,14 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         new
                         {
                             Id = "8da8ad13-b14a-458b-9b29-b07015c3b3d0",
-                            ConcurrencyStamp = "be82c6b4-3630-4aee-a01e-0b454ace1dd0",
+                            ConcurrencyStamp = "7e197e6d-0225-41c9-b6b2-95f049c983d8",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "49566474-f16f-4379-b56f-1ae46d859945",
-                            ConcurrencyStamp = "e35f4886-c31c-42cb-b3e5-f27faba4e7bf",
+                            Id = "91089533-be92-448e-8480-35855e609027",
+                            ConcurrencyStamp = "95b88de9-2c9d-42cd-b0fb-ef2b2c15e8c4",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -224,11 +224,11 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
-
                     b.Property<string>("MessageContent")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MessageStatus")
+                        .HasColumnType("int");
 
                     b.Property<string>("RecevierMail")
                         .HasColumnType("nvarchar(max)");
@@ -283,15 +283,18 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("IdentityNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -311,7 +314,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -352,8 +356,8 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                         {
                             Id = "9a0d3776-5392-456c-8f81-42a1811d5129",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69d6c9eb-669f-4af5-bcaa-aef0e92bf128",
-                            CreationDate = new DateTime(2022, 12, 16, 15, 21, 39, 568, DateTimeKind.Local).AddTicks(8208),
+                            ConcurrencyStamp = "25d3e36f-59a4-4a1c-b037-5017b829c5b3",
+                            CreationDate = new DateTime(2022, 12, 19, 0, 32, 6, 395, DateTimeKind.Local).AddTicks(5626),
                             Email = "asenadeneme@hotmail.com",
                             EmailConfirmed = false,
                             FirstName = "Asena",
@@ -365,7 +369,7 @@ namespace PaparaBootcampBitirmeProjesi.DAL.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAECg6f0/tC/kbk70RGXAquYaFgyzsWl8hLjLuA5+eQIHwCAKW0oJtm38wYRjhTNsuvw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sevnur",
-                            SecurityStamp = "64235fb1-a4fc-41d1-ac24-d0f32d2769f4",
+                            SecurityStamp = "802351c3-4223-4aaf-a9b6-938130e4e624",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin"

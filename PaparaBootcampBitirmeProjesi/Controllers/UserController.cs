@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using PaparaBootcampBitirmeProjesi.BLL.Models;
 using PaparaBootcampBitirmeProjesi.BLL.Models.UserDTO;
 using PaparaBootcampBitirmeProjesi.BLL.Services.AdminService;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
 {
-    //[Authorize(Roles = "admin")]
+
     public class UserController : Controller
     {
         private readonly IUserService userService;
@@ -50,7 +47,7 @@ namespace PaparaBootcampBitirmeProjesi.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDTO createUserDTO)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid )
             {
                 await userService.CreateUser(createUserDTO);
                 return RedirectToAction("Index");

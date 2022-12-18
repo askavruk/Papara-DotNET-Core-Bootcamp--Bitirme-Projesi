@@ -150,8 +150,6 @@ C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeP
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\PaparaBootcampBitirmeProjesi.Presentation.RazorCoreGenerate.cache
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Message\GetMessageDetails.cshtml.g.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Message\Inbox.cshtml.g.cs
 C:\Users\Asena Sevnur Ulun\Desktop\Papara-Bitirme Projesi\PaparaBootcampBitirmeProjesi\PaparaBootcampBitirmeProjesi\obj\Debug\net5.0\Razor\Views\Message\NewMessage.cshtml.g.cs
