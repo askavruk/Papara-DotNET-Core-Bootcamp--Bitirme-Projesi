@@ -25,7 +25,7 @@ It shows interaction between admin and users. It has 2 different login one as Ad
 - The user can see the messages she/he sent.
 
 
-|   |  Technologies Used in Project   |   |
+|   |  Technologies Used in Project   | Versions |
 |---|---|---|
 | 1  | Net Core | 5.0 |
 | 2  | Entity Framework Core | 5.0.17 |
