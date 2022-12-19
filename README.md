@@ -25,10 +25,11 @@ It shows interaction between admin and users. It has 2 different login one as Ad
 - The user can see the messages she/he sent.
 
 
-|   |  Technologies Used in Project   |
-|---|---|
-| 1  | Bootcamp-Week1-Assignment  |
-| 2  | Bootcamp-Week2-Assignment  |
-| 3  | Bootcamp-Week3-Assignment  |
-| 4  | Bootcamp-Week4-Assignment  |
-| 5  | Bootcamp-Week5-Assignment  |
+|   |  Technologies Used in Project   |   |
+|---|---|---|
+| 1  | Net Core | 5.0 |
+| 2  | Entity Framework Core | 5.0.17 |
+| 3  | MSSQL | v18.11.1 |
+| 4  | Microsoft AspNetCore Identity | 2.2.0 |
+| 5  | AutoMapper | 12.0.0 |
+| 6  | Fluent Validation AspNetCore | 11.2.2 |gi add
